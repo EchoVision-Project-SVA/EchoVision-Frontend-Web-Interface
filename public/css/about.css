@@ -1,0 +1,192 @@
+/* إزالة الهوامش الافتراضية */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+}
+
+/* الناف بار */
+.header {
+  background-color: rgb(245, 248, 251);
+  display: flex;
+  align-items: center;
+  padding: 20px 60px;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box; /* التأكد من أن الحشو لا يزيد حجم العنصر */
+  margin: 0; /* إزالة أي هوامش */
+}
+
+.logo {
+  width: 87px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+  margin-left: 80px;
+  box-sizing: border-box; /* التأكد من أن الحشو لا يزيد حجم العنصر */
+}
+
+.nav-links {
+  display: flex;
+  gap: 80px;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; /* التأكد من أن الحشو لا يزيد حجم العنصر */
+}
+
+.nav-link {
+  font-size: 14px;
+  color: #000;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-weight: bold; /* جعل الروابط بخط عريض */
+  box-sizing: border-box; /* التأكد من أن الحشو لا يزيد حجم العنصر */
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  box-sizing: border-box; /* التأكد من أن الحشو لا يزيد حجم العنصر */
+}
+
+.login-btn {
+  background-color: rgb(86, 90, 221);
+  color: #ffffff; /* تغيير لون النص إلى أبيض */
+  padding: 14px 17px;
+  border-radius: 9999px;
+  font-size: 15px;
+  letter-spacing: 0.08px;
+  text-decoration: none;
+  font-weight: bold; /* جعل النص بخط عريض */
+  box-sizing: border-box; /* التأكد من أن الحشو لا يزيد حجم العنصر */
+}
+
+.signup-btn {
+  background-color: rgb(239, 240, 255);
+  color: #000001;
+  padding: 14px 18px;
+  border-radius: 9999px;
+  font-size: 15px;
+  letter-spacing: 0.08px;
+  text-decoration: none;
+  font-weight: bold; /* جعل النص بخط عريض */
+  box-sizing: border-box; /* التأكد من أن الحشو لا يزيد حجم العنصر */
+}
+.lang-btn {
+  background-color: rgb(142, 135, 243); /* لون خلفية الزر */
+  color: #ffffff; /* لون النص */
+  padding: 10px 14px; /* الحشو الداخلي للزر */
+  border-radius: 8px; /* جعل الزر دائري الزوايا */
+  font-size: 14px; /* حجم الخط */
+  font-weight: bold; /* جعل النص عريض */
+  text-decoration: none; /* إزالة التسطير من الرابط */
+  transition: all 0.3s ease-in-out; /* تأثير الانتقال */
+}
+
+.lang-btn:hover {
+  background-color: rgb(110, 103, 220); /* لون خلفية عند التحويم */
+}
+
+
+/* المحتوى الرئيسي */
+.main-content {
+  background-color: #fff;
+  padding: 60px 80px; /* تم تقليل الحشو العلوي */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.content-wrapper {
+  max-width: 815px;
+  width: 100%;
+  text-align: center;
+}
+
+.title {
+  font-size: 63px;
+  line-height: 1;
+  letter-spacing: -2.96px;
+  color: #000;
+  margin-bottom: 72px;
+}
+
+.description {
+  font-size: 27px;
+  line-height: 41px;
+  letter-spacing: -0.35px;
+  color: #000;
+  text-align: left;
+}
+
+.description p {
+  margin: 0 0 2em;
+}
+
+.description p:last-child {
+  margin-bottom: 0;
+}
+
+/* الفوتر */
+.footer {
+  background-color: #000;
+  padding: 48px 70px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 2;
+}
+
+/* تصميم للشاشات الصغيرة */
+@media (max-width: 991px) {
+  .header {
+    padding: 20px 40px;
+  }
+
+  .nav-container {
+    margin-left: 40px;
+  }
+
+  .nav-links {
+    gap: 40px;
+  }
+
+  .auth-buttons {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    padding: 20px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .auth-buttons {
+    display: none;
+  }
+}

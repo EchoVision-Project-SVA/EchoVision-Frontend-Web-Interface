@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About EchoVision</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../public/css/about.css">
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/f323aebef58277caab7dbe39260b9674dd4a09ac63495998aff7e633a7743b82?placeholderIfAbsent=true"
+          alt="EchoVision Logo"
+          loading="lazy"
+          class="logo"
+        />
+        <nav class="nav-container">
+          <ul class="nav-links">
+            <li><a href="../index.html" class="nav-link">Home</a></li>
+            <li><a href="../pricing/pricing.html" class="nav-link">Pricing</a></li>
+            <li><a href="../about_us/about.html" class="nav-link">About Us</a></li>
+          </ul>
+          <div class="auth-buttons">
+            <a href="../auth/login.html" class="login-btn">Login</a>
+            <a href="../auth/signup.html" class="signup-btn">Signup</a>
+            <a href="#" class="lang-btn">AR</a>
+          </div>
+        </nav>
+      
+      </header>
+
+      <main class="main-content">
+        <article class="content-wrapper">
+          <h1 class="title" data-translate="main-title">About EchoVision</h1>
+          <section class="description">
+            <p data-translate="main-desc">
+              We are revolutionizing speech recognition with AI-powered lip reading,
+              enabling seamless communication in any environment. Our technology
+              enhances accessibility for the hearing impaired, improves
+              speech-to-text accuracy, and enables silent, secure communication.
+            </p>
+            <p data-translate="main-desc2">
+              Trusted by individuals and organizations worldwide, our cutting-edge
+              solution bridges the gap between spoken language and technology.
+              Built on advanced AI and deep learning, we are committed to making
+              communication more inclusive and efficient.
+            </p>
+          </section>
+        </article>
+      </main>
+
+      <footer class="footer" data-translate="footer">
+        © 2025, EchoVision, Inc. All Rights Reserved.
+      </footer>
+    </div>
+
+    <script>
+      // كائن يحتوي على الترجمات لكل لغة
+      const translations = {
+        en: {
+          "nav-home": "Home",
+          "nav-pricing": "Pricing",
+          "nav-about": "About Us",
+          "btn-login": "Login",
+          "btn-signup": "Signup",
+          "btn-lang": "AR",
+          "main-title": "About EchoVision",
+          "main-desc":
+            "We are revolutionizing speech recognition with AI-powered lip reading, enabling seamless communication in any environment. Our technology enhances accessibility for the hearing impaired, improves speech-to-text accuracy, and enables silent, secure communication.",
+          "main-desc2":
+            "Trusted by individuals and organizations worldwide, our cutting-edge solution bridges the gap between spoken language and technology. Built on advanced AI and deep learning, we are committed to making communication more inclusive and efficient.",
+          footer:
+            "© 2025, EchoVision, Inc. All Rights Reserved."
+        },
+        ar: {
+          "nav-home": "الرئيسية",
+          "nav-pricing": "الأسعار",
+          "nav-about": "حولنا",
+          "btn-login": "تسجيل الدخول",
+          "btn-signup": "إنشاء حساب",
+          "btn-lang": "EN",
+          "main-title": "حول EchoVision",
+          "main-desc":
+            "نحن نحدث ثورة في التعرف على الكلام باستخدام قراءة الشفاه المدعومة بالذكاء الاصطناعي، مما يتيح تواصل سلس في أي بيئة. تقنيتنا تعزز إمكانية الوصول للأفراد ضعاف السمع، وتحسن دقة تحويل الكلام إلى نص، وتمكن من التواصل الصامت والآمن.",
+          "main-desc2":
+            "يثق بها الأفراد والمؤسسات حول العالم، حيث يجسر حلنا المتطور الفجوة بين اللغة المنطوقة والتكنولوجيا. بُنيت على أساس الذكاء الاصطناعي المتقدم والتعلم العميق، ونحن ملتزمون بجعل التواصل أكثر شمولية وكفاءة.",
+          footer:
+            "© 2025، EchoVision، Inc. جميع الحقوق محفوظة."
+        }
+      };
+
+      // اللغة الافتراضية هي الإنجليزية
+      let currentLanguage = "en";
+
+      // دالة لتحديث المحتوى حسب اللغة
+      function updateLanguage(lang) {
+        // تحديث جميع العناصر التي تحتوي على data-translate
+        document.querySelectorAll("[data-translate]").forEach((el) => {
+          const key = el.getAttribute("data-translate");
+          if (translations[lang][key]) {
+            el.textContent = translations[lang][key];
+          }
+        });
+
+        // تحديث سمات اللغة والاتجاه على العنصر <html>
+        if (lang === "ar") {
+          document.documentElement.setAttribute("lang", "ar");
+          document.documentElement.setAttribute("dir", "rtl");
+        } else {
+          document.documentElement.setAttribute("lang", "en");
+          document.documentElement.setAttribute("dir", "ltr");
+        }
+      }
+
+      // إضافة مستمع للنقر على زر تبديل اللغة
+      document.querySelector(".lang-btn").addEventListener("click", () => {
+        currentLanguage = currentLanguage === "en" ? "ar" : "en";
+        updateLanguage(currentLanguage);
+      });
+    </script>
+  </body>
+</html>

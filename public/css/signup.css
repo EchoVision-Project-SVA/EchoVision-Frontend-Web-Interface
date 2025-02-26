@@ -91,11 +91,9 @@ html, body {
   margin-top: 15px;
 }
 
-
 .submit-button:hover {
   background-color: #0052cc;
 }
-
 
 .form-footer {
   display: flex;
@@ -116,7 +114,6 @@ html, body {
   text-decoration: none;
   font-weight: 500;
 }
-
 
 .login-link:hover {
   text-decoration: underline;

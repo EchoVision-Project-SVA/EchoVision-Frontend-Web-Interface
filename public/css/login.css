@@ -1,4 +1,3 @@
-
 html, body {
   overflow: hidden;
   margin: 0;
@@ -56,7 +55,6 @@ html, body {
   max-width: 400px;
 }
 
-
 .input-label {
   background-color: #fff;
   padding: 0 4px;
@@ -66,7 +64,6 @@ html, body {
   top: -6px;
   left: 12px;
 }
-
 
 .input-control {
   border-radius: 4px;
@@ -78,7 +75,6 @@ html, body {
   max-width: 400px;
   box-sizing: border-box;
 }
-
 
 .login-button {
   display: flex;
@@ -100,7 +96,6 @@ html, body {
   background-color: #0044cc;
 }
 
-
 .button-text {
   color: #fff;
   font-size: 16px;
@@ -111,7 +106,6 @@ html, body {
   line-height: 50px;
   width: 100%;
 }
-
 
 .signup-section {
   display: flex;
@@ -131,12 +125,10 @@ html, body {
   gap: 8px;
 }
 
-
 .divider {
   border-left: 1px solid #000;
   height: 18px;
 }
-
 
 .signup-link {
   color: #000;
