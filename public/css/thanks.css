@@ -1,14 +1,12 @@
-/* إزالة الهوامش الافتراضية */
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
-  font-family: 'Inter', sans-serif; /* تطبيق الفونت على الصفحة بأكملها */
-  overflow: hidden; /* إزالة شريط التمرير */
+  font-family: 'Inter', sans-serif; 
+  overflow: hidden; 
 }
 
-/* الناف بار */
 .header {
   background-color: rgb(245, 248, 251);
   display: flex;
@@ -53,7 +51,7 @@ html, body {
   padding: 8px 18px;
   border-radius: 9999px;
   text-decoration: none;
-  font-weight: 600; /* أكثر سمكًا */
+  font-weight: 600;
   box-sizing: border-box;
 }
 
@@ -72,7 +70,7 @@ html, body {
   font-size: 15px;
   letter-spacing: 0.08px;
   text-decoration: none;
-  font-weight: 600; /* أكثر سمكًا */
+  font-weight: 600;
   box-sizing: border-box;
 }
 
@@ -84,23 +82,22 @@ html, body {
   font-size: 15px;
   letter-spacing: 0.08px;
   text-decoration: none;
-  font-weight: 600; /* أكثر سمكًا */
+  font-weight: 600; 
   box-sizing: border-box;
 }
 .lang-btn {
-  background-color: rgb(142, 135, 243); /* لون خلفية الزر */
-  color: #ffffff; /* لون النص */
-  padding: 10px 14px; /* الحشو الداخلي للزر */
-  border-radius: 8px; /* جعل الزر دائري الزوايا */
-  font-size: 14px; /* حجم الخط */
-  font-weight: bold; /* جعل النص عريض */
-  text-decoration: none; /* إزالة التسطير من الرابط */
-  transition: all 0.3s ease-in-out; /* تأثير الانتقال */
+  background-color: rgb(142, 135, 243); 
+  color: #ffffff; 
+  padding: 10px 14px; 
+  border-radius: 8px; 
+  font-size: 14px; 
+  font-weight: bold; 
+  text-decoration: none;
+  transition: all 0.3s ease-in-out; 
 }
 
 .lang-btn:hover {
-  background-color: rgb(110, 103, 220); /* لون خلفية عند التحويم */
-}
+  background-color: rgb(110, 103, 220);
 
 
 /* المحتوى الرئيسي */
@@ -122,7 +119,7 @@ html, body {
   color: #000000;
   text-align: center;
   font-size: 64px;
-  font-weight: 600; /* أكثر سمكًا */
+  font-weight: 600;
   line-height: 1.2;
   margin-top: 156px;
 }
@@ -131,13 +128,13 @@ html, body {
   color: #000000;
   text-align: center;
   font-size: 20px;
-  font-weight: 500; /* متوسط السمك */
+  font-weight: 500;
   line-height: 1.2;
   text-decoration: none;
   margin-top: 169px;
 }
 
-/* الفوتر */
+
 .footer {
   background-color: rgb(0, 0, 0);
   width: 100%;
@@ -151,7 +148,6 @@ html, body {
   margin: 0;
 }
 
-/* تصميم للشاشات الصغيرة */
 @media (max-width: 991px) {
   .header {
     padding: 20px 40px;

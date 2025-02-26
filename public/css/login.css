@@ -1,4 +1,4 @@
-/* أساسيات الصفحة */
+
 html, body {
   overflow: hidden;
   margin: 0;
@@ -9,7 +9,7 @@ html, body {
   font-family: "Roboto", sans-serif;
 }
 
-/* زر تغيير اللغة */
+
 .lang-btn {
   position: fixed;
   top: 20px;
@@ -31,13 +31,12 @@ html, body {
   transform: scale(1.05);
 }
 
-/* ضبط زر اللغة عند التحويل إلى العربية */
+
 body[dir="rtl"] .lang-btn {
   left: 20px;
   right: auto;
 }
 
-/* تنسيق الحاوية الرئيسية */
 .login-container {
   background-color: #fff;
   display: flex;
@@ -65,7 +64,7 @@ body[dir="rtl"] .lang-btn {
   margin-bottom: 20px;
 }
 
-/* تنسيق النموذج */
+
 .login-form {
   width: 100%;
   max-width: 400px;
@@ -133,7 +132,7 @@ body[dir="rtl"] .lang-btn {
   width: 100%;
 }
 
-/* تنسيق قسم الاشتراك */
+
 .signup-section {
   display: flex;
   justify-content: center;
@@ -164,7 +163,7 @@ body[dir="rtl"] .lang-btn {
   text-decoration: underline;
 }
 
-/* تحسينات للهواتف */
+
 @media (max-width: 768px) {
   .login-container {
     padding: 20px;
@@ -185,7 +184,7 @@ body[dir="rtl"] .lang-btn {
   }
 }
 
-/* تحسينات للشاشات الكبيرة */
+
 @media (min-width: 1200px) {
   .login-form {
     max-width: 450px;

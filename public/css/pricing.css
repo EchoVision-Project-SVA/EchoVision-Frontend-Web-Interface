@@ -1,4 +1,4 @@
-/* إزالة الهوامش الافتراضية */
+
 html, body {
   margin: 0;
   padding: 0;
@@ -7,7 +7,7 @@ html, body {
   font-family: 'Inter', sans-serif;
 }
 
-/* الناف بار */
+
 .header {
   background-color: rgb(245, 248, 251);
   display: flex;
@@ -15,8 +15,8 @@ html, body {
   padding: 20px 60px;
   justify-content: space-between;
   width: 100%;
-  box-sizing: border-box; /* التأكد من أن الحشو لا يزيد حجم العنصر */
-  margin: 0; /* إزالة أي هوامش */
+  box-sizing: border-box; 
+  margin: 0;
 }
 
 .logo {
@@ -31,7 +31,7 @@ html, body {
   justify-content: space-between;
   flex-grow: 1;
   margin-left: 80px;
-  box-sizing: border-box; /* التأكد من أن الحشو لا يزيد حجم العنصر */
+  box-sizing: border-box;
 }
 
 .nav-links {
@@ -43,7 +43,7 @@ html, body {
   list-style: none;
   padding: 0;
   margin: 0;
-  box-sizing: border-box; /* التأكد من أن الحشو لا يزيد حجم العنصر */
+  box-sizing: border-box; 
 }
 
 .nav-link {
@@ -52,27 +52,27 @@ html, body {
   padding: 8px 18px;
   border-radius: 9999px;
   text-decoration: none;
-  font-weight: bold; /* جعل الروابط بخط عريض */
-  box-sizing: border-box; /* التأكد من أن الحشو لا يزيد حجم العنصر */
+  font-weight: bold; 
+  box-sizing: border-box; 
 }
 
 .auth-buttons {
   display: flex;
   gap: 40px;
   align-items: center;
-  box-sizing: border-box; /* التأكد من أن الحشو لا يزيد حجم العنصر */
+  box-sizing: border-box;
 }
 
 .login-btn {
   background-color: rgb(86, 90, 221);
-  color: #ffffff; /* تغيير لون النص إلى أبيض */
+  color: #ffffff;
   padding: 14px 17px;
   border-radius: 9999px;
   font-size: 15px;
   letter-spacing: 0.08px;
   text-decoration: none;
-  font-weight: bold; /* جعل النص بخط عريض */
-  box-sizing: border-box; /* التأكد من أن الحشو لا يزيد حجم العنصر */
+  font-weight: bold; 
+  box-sizing: border-box;
 }
 
 .signup-btn {
@@ -83,22 +83,22 @@ html, body {
   font-size: 15px;
   letter-spacing: 0.08px;
   text-decoration: none;
-  font-weight: bold; /* جعل النص بخط عريض */
-  box-sizing: border-box; /* التأكد من أن الحشو لا يزيد حجم العنصر */
+  font-weight: bold; 
+  box-sizing: border-box; 
 }
 .lang-btn {
-  background-color: rgb(142, 135, 243); /* لون خلفية الزر */
-  color: #ffffff; /* لون النص */
-  padding: 10px 14px; /* الحشو الداخلي للزر */
-  border-radius: 8px; /* جعل الزر دائري الزوايا */
-  font-size: 14px; /* حجم الخط */
-  font-weight: bold; /* جعل النص عريض */
-  text-decoration: none; /* إزالة التسطير من الرابط */
-  transition: all 0.3s ease-in-out; /* تأثير الانتقال */
+  background-color: rgb(142, 135, 243); 
+  color: #ffffff; 
+  padding: 10px 14px; 
+  border-radius: 8px;
+  font-size: 14px; 
+  font-weight: bold; 
+  text-decoration: none; 
+  transition: all 0.3s ease-in-out; 
 }
 
 .lang-btn:hover {
-  background-color: rgb(110, 103, 220); /* لون خلفية عند التحويم */
+  background-color: rgb(110, 103, 220); 
 }
 
 

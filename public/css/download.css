@@ -1,4 +1,4 @@
-/* Base styles */
+
 * {
   margin: 0;
   padding: 0;
@@ -151,7 +151,7 @@ html[dir="rtl"] .feature-section {
   flex-direction: row-reverse;
 }
 
-/* تعديل زر الأبل ليكون بنفس حجم زر الأندرويد */
+
 .feature-box, .feature-box-secondary {
   display: flex;
   align-items: center;
@@ -162,7 +162,7 @@ html[dir="rtl"] .feature-section {
   text-align: center;
   flex: 1 1 150px;
   max-width: 200px;
-  height: 90px; /* توحيد الارتفاع */
+  height: 90px; 
   transition: background-color 0.3s ease;
 }
 
@@ -179,7 +179,7 @@ html[dir="rtl"] .feature-section {
 }
 
 .feature-box .feature-icon, .feature-box-secondary .feature-icon {
-  width: 60px;  /* توحيد حجم الصورة */
+  width: 60px;  
   height: auto;
 }
 
@@ -193,7 +193,7 @@ html[dir="rtl"] .feature-section {
   font-size: 12px;
 }
 
-/* Responsive styles */
+
 @media (max-width: 991px) {
   .header {
     padding: 20px 30px;
@@ -208,7 +208,7 @@ html[dir="rtl"] .feature-section {
   }
 }
 
-/* عند استخدام اللغة العربية في الشاشة الصغيرة */
+
 @media (max-width: 991px) {
   html[dir="rtl"] .nav-container {
     margin-right: 20px;
@@ -231,7 +231,7 @@ html[dir="rtl"] .feature-section {
   }
 }
 
-/* عندما تكون الصفحة RTL، يتم ضبط بعض العناصر */
+
 @media (max-width: 640px) {
   html[dir="rtl"] .header {
       padding: 15px 20px;
