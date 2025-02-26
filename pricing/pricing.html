@@ -1,73 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EchoVision Pricing</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EchoVision Pricing</title>
+  
+  <!-- تم تعديل رابط الفونت ليشمل الأوزان 400، 500، و600 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../public/css/pricing.css">
+</head>
+<body>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
+<header class="header">
+  <img
+    src="https://cdn.builder.io/api/v1/image/assets/TEMP/f323aebef58277caab7dbe39260b9674dd4a09ac63495998aff7e633a7743b82?placeholderIfAbsent=true"
+    alt="EchoVision Logo"
+    loading="lazy"
+    class="logo"
+  />
+  <nav class="nav-container">
+    <ul class="nav-links">
+      <li><a href="../index.html" class="nav-link">Home</a></li>
+      <li><a href="../pricing/pricing.html" class="nav-link">Pricing</a></li>
+      <li><a href="../about_us/about.html" class="nav-link">About Us</a></li>
+    </ul>
+    <div class="auth-buttons">
+      <a href="../auth/login.html" class="login-btn">Login</a>
+      <a href="../auth/signup.html" class="signup-btn">Signup</a>
+      <button id="lang-toggle" class="lang-btn">AR</button>
+    </div>
+  </nav>
+</header>
 
-    <link rel="stylesheet" href="../public/css/pricing.css" />
-  </head>
-  <body>
-    <header class="header">
-      <div class="logo">
-        <img
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/15969623297f3ef404022e5cbb0deb842027d6e5"
-          alt="Logo"
-          loading="lazy"
-          class="logo-img"
-        />
+<main class="main-content">
+  <section class="hero-section">
+    <h1 id="hero-title" class="hero-title">Flexible Pricing for Every Need.</h1>
+    <p id="hero-subtitle" class="hero-subtitle">
+      Choose between monthly or yearly plans—tailored for your growth.
+    </p>
+  </section>
+
+  <section class="pricing-container">
+    <article class="pricing-card">
+      <div class="plan-details">
+        <h2 id="plan-monthly" class="plan-name">Monthly</h2>
+        <div class="price-container">
+          <p id="price-monthly" class="price">$39</p>
+          <span id="discount-monthly" class="discount">-15%</span>
+        </div>
       </div>
-      <nav class="nav-links">
-        <a href="#" class="nav-item">Home</a>
-        <a href="#" class="nav-item">Pricing</a>
-        <a href="#" class="nav-item">About Us</a>
-      </nav>
-      <div class="auth-buttons">
-        <button class="login-btn">Login</button>
-        <button class="signup-btn">Signup</button>
+      <button id="btn-monthly" class="get-started-btn">Get Started</button>
+    </article>
+
+    <article class="pricing-card-dark">
+      <div class="plan-details">
+        <h2 id="plan-yearly" class="plan-name-2">Yearly</h2>
+        <div class="price-container">
+          <p id="price-yearly" class="price-2">$300</p>
+          <span id="discount-yearly" class="discount-2">-15%</span>
+        </div>
       </div>
-    </header>
+      <button id="btn-yearly" class="get-started-btn">Get Started</button>
+    </article>
+  </section>
+</main>
 
-    <main class="main-content">
-      <section class="hero-section">
-        <h1 class="hero-title">Flexible Pricing for Every Need.</h1>
-        <p class="hero-subtitle">
-          Choose between monthly or yearly plans—tailored for your growth.
-        </p>
-      </section>
+<footer class="footer">
+  <p id="footer-text">© 2025, EchoVision, Inc. All Rights Reserved.</p>
+</footer>
 
-      <section class="pricing-container">
-        <article class="pricing-card">
-          <div class="plan-details">
-            <h2 class="plan-name">Monthly</h2>
-            <div class="price-container">
-              <p class="price">$39</p>
-              <span class="discount">-15%</span>
-            </div>
-          </div>
-          <button class="get-started-btn">Get Started</button>
-        </article>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const langBtn = document.getElementById("lang-toggle");
 
-        <article class="pricing-card-dark">
-          <div class="plan-details">
-            <h2 class="plan-name-2">Yearly</h2>
-            <div class="price-container">
-              <p class="price-2">$300</p>
-              <span class="discount-2">-15%</span>
-            </div>
-          </div>
-          <button class="get-started-btn">Get Started</button>
-        </article>
-      </section>
-    </main>
+    const translations = {
+        "Home": "الرئيسية",
+        "Pricing": "الأسعار",
+        "About Us": "معلومات عنا",
+        "Login": "تسجيل الدخول",
+        "Signup": "إنشاء حساب",
+        "Flexible Pricing for Every Need.": "أسعار مرنة لتناسب كل احتياجاتك.",
+        "Choose between monthly or yearly plans—tailored for your growth.": "اختر بين الاشتراك الشهري أو السنوي ليناسب تطورك.",
+        "Monthly": "شهريًا",
+        "Yearly": "سنويًا",
+        "$39": "٣٩ دولار",
+        "$300": "٣٠٠ دولار",
+        "-15%": "-١٥٪",
+        "Get Started": "ابدأ الآن",
+        "© 2025, EchoVision, Inc. All Rights Reserved.": "© 2025، شركة EchoVision. جميع الحقوق محفوظة."
+    };
 
-    <footer class="footer">
-      © 2025, EchoVision, Inc. All Rights Reserved.
-    </footer>
-  </body>
+    let isArabic = false;
+
+    langBtn.addEventListener("click", function () {
+        isArabic = !isArabic;
+        document.body.dir = isArabic ? "rtl" : "ltr";
+        document.documentElement.lang = isArabic ? "ar" : "en";
+        langBtn.textContent = isArabic ? "EN" : "AR";
+
+        // تحديث جميع النصوص
+        document.querySelectorAll(".nav-link, .login-btn, .signup-btn, .hero-title, .hero-subtitle, .plan-name, .plan-name-2, .price, .price-2, .discount, .discount-2, .get-started-btn, .footer p")
+            .forEach(element => {
+                const originalText = element.textContent.trim();
+                element.textContent = isArabic ? translations[originalText] || originalText : Object.keys(translations).find(key => translations[key] === originalText) || originalText;
+            });
+    });
+});
+</script>
+
+</body>
 </html>

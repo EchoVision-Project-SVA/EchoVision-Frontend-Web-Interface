@@ -1,346 +1,169 @@
-.send {
-  border-radius: 16px;
-  background-color: #fff;
-  overflow: hidden;
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.container {
-  display: flex;
-  width: 100%;
-  padding: 24px;
-  align-items: stretch;
-  justify-content: start;
-  flex: 1;
-  flex-wrap: wrap;
+html, body {
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.left-section {
-  min-width: 240px;
-  padding: 48px 104px 48px 80px;
+/* Body */
+body {
+  font-family: Inter, sans-serif;
+  background-color: #f5f8fb;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main-container {
   flex: 1;
-  flex-shrink: 1;
-  flex-basis: 0%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
 .logo {
-  aspect-ratio: 1.09;
-  object-fit: contain;
-  object-position: center;
-  width: 87px;
+  width: 50px;
 }
 
-.billing-section {
-  margin-top: 32px;
-  width: 100%;
+.nav-links {
+  display: flex;
+  gap: 20px;
 }
 
-.billing-header {
-  width: 100%;
-  font-family:
-    "Helvetica Now Display",
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+.nav-links a {
   font-size: 16px;
-  font-weight: 500;
+  color: #212121;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background 0.3s;
 }
 
-.section-title {
-  color: #000001;
-  line-height: 1;
-  font-size: 16px;
-  margin: 0;
+.nav-links a:hover {
+  background: rgba(0, 0, 0, 0.05);
 }
 
-.input-field {
-  align-self: stretch;
-  border-radius: 12px;
-  background-color: #fff;
-  border: 1px solid #e1e6ef;
-  margin-top: 12px;
-  min-height: 56px;
-  width: 100%;
-  padding: 16px 20px;
-  gap: 12px;
-  font-family:
-    Inter,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
-  font-size: 14px;
-  color: #010101;
-  font-weight: 400;
-  letter-spacing: 0.5px;
-  line-height: 24px;
-}
-
-.payment-title {
-  margin-top: 12px;
-}
-
-.payment-methods {
+.auth-buttons {
   display: flex;
-  margin-top: 12px;
-  width: 100%;
-  align-items: start;
-  gap: 12px;
-  justify-content: start;
-  flex-wrap: wrap;
-}
-
-.payment-cards {
-  aspect-ratio: 3.39;
-  object-fit: contain;
-  object-position: center;
-  width: 298px;
-  border-radius: 12px;
-  min-width: 240px;
-  flex: 1;
-  flex-shrink: 1;
-  flex-basis: 118px;
-}
-
-.savings-section {
-  border-radius: 12px;
-  background-color: #fff;
-  border: 1px solid #e1e6ef;
-  display: flex;
-  min-width: 240px;
-  min-height: 88px;
-  padding: 18px 20px 18px 98px;
-  flex-direction: column;
-  overflow: hidden;
-  align-items: start;
-  justify-content: center;
-  flex: 1;
-  flex-shrink: 1;
-  flex-basis: 0%;
-}
-
-.savings-icon {
-  aspect-ratio: 1.64;
-  object-fit: contain;
-  object-position: center;
-  width: 87px;
-  fill: #000008;
-  stroke-width: 1px;
-  stroke: #d6dce5;
-  filter: drop-shadow(0px 2px 20px rgba(183, 183, 183, 0.08))
-    drop-shadow(0px 20px 40px rgba(183, 183, 183, 0.08));
-}
-
-.card-details {
-  display: flex;
-  margin-top: 12px;
-  width: 100%;
-  align-items: start;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.action-buttons {
-  margin-top: 32px;
-  width: 100%;
-  font-family:
-    "Helvetica Now Display",
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: 0.16px;
-  line-height: 1;
-  display: flex;
-  gap: 12px;
-}
-
-.cancel-btn {
-  align-self: stretch;
-  border-radius: 12px;
-  background-color: #f2f5f7;
-  min-height: 56px;
-  padding: 18px 20px;
-  gap: 6px;
-  color: #000;
-  width: 200px;
-  border: none;
-  cursor: pointer;
-}
-
-.subscribe-btn {
-  align-self: stretch;
-  border-radius: 12px;
-  background-color: #834cff;
-  min-width: 240px;
-  min-height: 56px;
-  padding: 18px 20px;
-  gap: 6px;
-  color: #010101;
-  flex: 1;
-  flex-shrink: 1;
-  border: none;
-  cursor: pointer;
-}
-
-.right-section {
-  border-radius: 12px;
-  background-color: #edf2f5;
-  position: relative;
-  min-width: 240px;
-  padding: 48px 56px;
-  overflow: hidden;
-  width: 600px;
-}
-
-.background-pattern {
-  aspect-ratio: 1.15;
-  object-fit: contain;
-  object-position: center;
-  width: 860px;
-  position: absolute;
-  z-index: 0;
-  max-width: 100%;
-  right: -205px;
-  top: 420px;
-  height: 746px;
-}
-
-.summary {
-  z-index: 0;
-  width: 100%;
-}
-
-.divider {
-  border-color: #cdd6e5;
-  border-style: solid;
-  border-width: 1px;
-  min-height: 1px;
-  width: 100%;
-  margin: 0;
-}
-
-.summary-content {
-  margin-top: 24px;
-  width: 100%;
-}
-
-.total-section {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  gap: 40px 100px;
-  font-family:
-    "Helvetica Now Display",
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
-  font-size: 28px;
-  color: #000;
-  font-weight: 700;
-  letter-spacing: 0.28px;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.total-label,
-.total-amount {
-  margin: auto 0;
-}
-
-.security-info {
-  display: flex;
-  margin-top: 20px;
-  width: 100%;
-  align-items: start;
-  gap: 8px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.security-icon-wrapper {
-  display: flex;
-  padding-top: 2px;
-  align-items: start;
   gap: 10px;
+}
+
+.auth-buttons button {
+  border: none;
+  border-radius: 20px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.login-button {
+  background-color: #565add;
+  color: white;
+}
+
+.signup-button {
+  background-color: #efefff;
+  color: #4b42ad;
+}
+
+/* Video Container */
+.video-container {
+  position: relative;
+  display: flex;
   justify-content: center;
-  width: 20px;
+  margin-top: 20px;
 }
 
-.security-icon {
-  aspect-ratio: 1;
-  object-fit: contain;
-  object-position: center;
-  width: 20px;
+#video {
+  display: none;
+  width: 100%;
+  max-width: 700px;
+  border-radius: 15px;
 }
 
-.security-text {
-  color: #000001;
-  font-size: 16px;
-  font-family:
-    "Helvetica Now Display",
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: 0.16px;
-  flex: 1;
-  flex-shrink: 1;
-  flex-basis: 0%;
-  margin: 0;
+.hero-image {
+  width: 100%;
+  max-width: 700px;
+  border-radius: 15px;
 }
 
-@media (max-width: 991px) {
-  .container {
-    max-width: 100%;
-    padding: 20px;
-  }
+/* Caption Box */
+.caption-box {
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  max-width: 50%;
+  margin: 20px auto;
+  text-align: center;
+  line-height: 1.4;
+}
 
-  .left-section {
-    max-width: 100%;
-    padding: 20px;
-  }
+/* Microphone Button */
+.microphone-container {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
 
-  .billing-header {
-    max-width: 100%;
-  }
+.microphone-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: white;
+  border: 3px solid #c0392b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
 
-  .input-field {
-    max-width: 100%;
-  }
+.microphone-button.recording {
+  background-color: #c0392b;
+  border-color: #fff;
+}
 
-  .payment-methods {
-    max-width: 100%;
-  }
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 15px;
+  background-color: #000;
+  color: white;
+  width: 100%;
+  margin-top: auto;
+}
 
-  .savings-section {
-    padding-left: 20px;
+/* Responsive */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 10px;
   }
-
-  .right-section {
-    max-width: 100%;
-    padding: 20px;
+  .nav-links {
+    flex-direction: column;
   }
-
-  .summary {
-    max-width: 100%;
-  }
-
-  .divider {
-    max-width: 100%;
-  }
-
-  .summary-content {
-    max-width: 100%;
-  }
-
-  .security-text {
-    max-width: 100%;
+  .caption-box {
+    max-width: 70%;
   }
 }

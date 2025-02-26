@@ -1,64 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up | EchoVision</title>
-    <link rel="stylesheet" href="../public/css/signup.css" />
-  </head>
-  <body>
-    <div class="container">
-      <div class="logo-container">
-        <img
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/bedb8fd6e227ef34cf9e53bb0d48d245af596939de8b59f118b7d9e572b31f31?placeholderIfAbsent=true"
-          alt="Logo"
-          loading="lazy"
-          class="logo"
-        />
-      </div>
-      <h1 class="title">Sign up to EchoVision</h1>
+    <link rel="stylesheet" href="../public/css/signup.css">
+</head>
+<body>
 
-      <form class="signup-form">
+<button id="lang-toggle" class="lang-btn">AR</button> <!-- زر تغيير اللغة -->
+
+<div class="container">
+    <div class="logo-container">
+        <img 
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/bedb8fd6e227ef34cf9e53bb0d48d245af596939de8b59f118b7d9e572b31f31?placeholderIfAbsent=true" 
+            alt="Logo" 
+            loading="lazy" 
+            class="logo" 
+        />
+    </div>
+    <h1 class="title">Sign up to EchoVision</h1>
+
+    <form class="signup-form">
         <div class="name-group">
-          <input
-            type="text"
-            placeholder="First name"
-            class="input half-width"
-            aria-label="First name"
-          />
-          <input
-            type="text"
-            placeholder="Last name"
-            class="input half-width"
-            aria-label="Last name"
-          />
+            <input type="text" id="first-name" placeholder="First name" class="input half-width" aria-label="First name" />
+            <input type="text" id="last-name" placeholder="Last name" class="input half-width" aria-label="Last name" />
         </div>
-        <input
-          type="email"
-          placeholder="Email Address"
-          class="input full-width"
-          aria-label="Email Address"
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          class="input full-width"
-          aria-label="Password"
-        />
-        <input
-          type="password"
-          placeholder="Confirm Password"
-          class="input full-width"
-          aria-label="Confirm Password"
-        />
+        <input type="email" id="email" placeholder="Email Address" class="input full-width" aria-label="Email Address" />
+        <input type="password" id="password" placeholder="Password" class="input full-width" aria-label="Password" />
+        <input type="password" id="confirm-password" placeholder="Confirm Password" class="input full-width" aria-label="Confirm Password" />
         <button type="submit" class="submit-button">SIGN UP</button>
-      </form>
+    </form>
 
-      <footer class="form-footer">
+    <footer class="form-footer">
         <p class="footer-text">Have an account?</p>
         <div class="footer-divider"></div>
-        <a href="#" class="login-link">Login</a>
-      </footer>
-    </div>
-  </body>
+        <a href="../auth/login.html" class="login-link">Login</a>
+    </footer>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const langBtn = document.getElementById("lang-toggle");
+  
+      const translations = {
+        "Sign up to EchoVision": "EchoVision إنشاء حساب في",
+        "First name": "الاسم الأول",
+        "Last name": "الاسم الأخير",
+        "Email Address": "البريد الإلكتروني",
+        "Password": "كلمة المرور",
+        "Confirm Password": "تأكيد كلمة المرور",
+        "SIGN UP": "تسجيل",
+        "Have an account?": "هل لديك حساب؟",
+        "Login": "تسجيل الدخول"
+      };
+  
+      let isArabic = false;
+  
+      langBtn.addEventListener("click", function () {
+        isArabic = !isArabic;
+        document.body.dir = isArabic ? "rtl" : "ltr";
+        document.documentElement.lang = isArabic ? "ar" : "en";
+        langBtn.textContent = isArabic ? "EN" : "AR";
+  
+        document.querySelectorAll(".title, .submit-button, .footer-text, .login-link").forEach(element => {
+          const originalText = element.textContent.trim();
+          element.textContent = isArabic ? translations[originalText] || originalText : Object.keys(translations).find(key => translations[key] === originalText) || originalText;
+        });
+  
+        // تحديث Placeholder للحقول
+        document.getElementById("first-name").setAttribute("placeholder", isArabic ? translations["First name"] : "First name");
+        document.getElementById("last-name").setAttribute("placeholder", isArabic ? translations["Last name"] : "Last name");
+        document.getElementById("email").setAttribute("placeholder", isArabic ? translations["Email Address"] : "Email Address");
+        document.getElementById("password").setAttribute("placeholder", isArabic ? translations["Password"] : "Password");
+        document.getElementById("confirm-password").setAttribute("placeholder", isArabic ? translations["Confirm Password"] : "Confirm Password");
+      });
+    });
+  </script>
+  
+
+</body>
 </html>
