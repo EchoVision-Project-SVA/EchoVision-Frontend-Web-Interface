@@ -93,7 +93,25 @@ html[dir="rtl"] .nav-container {
   font-weight: bold;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
+  margin-left: 20px; 
 }
+
+
+html[dir="rtl"] .lang-btn {
+  margin-left: 0;
+  margin-right: 20px; 
+}
+
+.logout-btn {
+  background-color: rgb(207, 0, 0);
+  color: #ffffff;
+  padding: 14px 17px;
+  border-radius: 9999px;
+  font-size: 15px;
+  letter-spacing: 0.08px;
+  text-decoration: none;
+}
+
 
 .lang-btn:hover {
   background-color: rgb(110, 103, 220);

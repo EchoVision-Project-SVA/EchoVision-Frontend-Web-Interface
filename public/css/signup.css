@@ -34,6 +34,26 @@ html, body {
   text-align: center;
 }
 
+.lang-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: rgb(142, 135, 243);
+  color: #ffffff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.lang-btn:hover {
+  background-color: rgb(110, 103, 220);
+  transform: scale(1.05);
+}
 
 .signup-form {
   width: 100%;
@@ -41,6 +61,11 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 16px; 
+}
+
+body[dir="rtl"] .lang-btn {
+  left: 20px;
+  right: auto;
 }
 
 .input {
@@ -76,7 +101,7 @@ html, body {
   width: calc(50% - 7px);
 }
 
-/* زر التسجيل */
+
 .submit-button {
   width: 100%;
   height: 44px;

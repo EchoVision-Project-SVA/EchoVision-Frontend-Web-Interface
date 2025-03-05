@@ -3,112 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subscription Checkout</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <title>Payment Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../public/css/checkout.css">
 </head>
 <body>
 
-    <!-- زر تغيير اللغة -->
-    <button id="lang-toggle" class="lang-btn">AR</button>
-
     <div class="container">
+        <!-- Left Section -->
         <div class="left-section">
-            <div class="logo">
-                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/121db11d199c46de2b32ed978513e5aef03e7b3d824e3cb9bd8081cea8ba311d" 
-                alt="Company Logo" class="logo-image">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/121db11d199c46de2b32ed978513e5aef03e7b3d824e3cb9bd8081cea8ba311d" class="logo" alt="Company Logo">
+            
+            <h2 class="section-title">Billed To</h2>
+            <input type="text" class="input-field" value="Jane Smith" readonly>
+            <input type="text" class="input-field" placeholder="Phone Number">
+            <input type="text" class="input-field" placeholder="Country">
+            <input type="text" class="input-field" placeholder="City">
+            <input type="text" class="input-field" placeholder="Address">
+            <input type="text" class="input-field" placeholder="Postal Code">
+
+            <h2 class="section-title">Payment Details</h2>
+            <div class="payment-methods">
+                <button class="paypal-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal"> Pay with PayPal
+                </button>
             </div>
-            <div class="form-container">
-                <h2 id="billed-to">Billed To</h2>
-                <input type="text" value="Jane Smith" readonly>
-                <input type="tel" id="phone-number" placeholder="Phone Number">
-                <input type="text" id="country" placeholder="Country">
-                <input type="text" id="city" placeholder="City">
-                <input type="text" id="address" placeholder="Address">
-                <input type="text" id="postal-code" placeholder="Postal Code">
 
-                <h2 id="payment-details">Payment Details</h2>
-                
-                <!-- PayPal كوسيلة دفع وحيدة -->
-                <div class="payment-section">
-                    <div class="paypal-container">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" 
-                        alt="PayPal Logo" class="paypal-logo">
-                    </div>
-                </div>
-
-                <div class="buttons">
-                    <button id="cancel-btn" class="cancel-btn">Cancel</button>
-                    <button id="subscribe-btn" class="subscribe-btn">Subscribe</button>
-                </div>
+            <div class="action-buttons">
+                <button class="cancel-btn">Cancel</button>
+                <button class="subscribe-btn">Subscribe</button>
             </div>
         </div>
+
+        <!-- Right Section -->
         <div class="right-section">
             <div class="summary">
-                <h3 id="total">Total</h3>
-                <p class="price">$16 / Month</p>
-                <p id="security-text" class="security">Guaranteed to be safe & secure, ensuring that all transactions are protected with the highest level of security.</p>
+                <div class="total-section">
+                    <span>Total</span>
+                    <span>$16 / Month</span>
+                </div>
+                <p class="security-text">🔒 Guaranteed to be safe & secure, ensuring that all transactions are protected with the highest level of security.</p>
             </div>
-            <div class="image-placeholder">
-                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/86127416f7d9c00fc68fcfbbe132a763dd7d431a4b65e345a0550bcf1da9adeb" 
-                alt="3D Abstract Image" class="abstract-image">
+            <div class="image-box">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/86127416f7d9c00fc68fcfbbe132a763dd7d431a4b65e345a0550bcf1da9adeb" alt="Illustration">
             </div>
         </div>
     </div>
-
-    <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const langBtn = document.getElementById("lang-toggle");
-    const translations = {
-        "Billed To": "تفاصيل الفاتورة",
-        "Phone Number": "رقم الهاتف",
-        "Country": "الدولة",
-        "City": "المدينة",
-        "Address": "العنوان",
-        "Postal Code": "الرمز البريدي",
-        "Payment Details": "تفاصيل الدفع",
-        "Cancel": "إلغاء",
-        "Subscribe": "اشتراك",
-        "Total": "الإجمالي",
-        "Month": "شهر",
-        "$16 / Month": "16$ / شهر",
-        "Guaranteed to be safe & secure, ensuring that all transactions are protected with the highest level of security.": 
-        "نضمن لك الأمان التام، حيث يتم حماية جميع المعاملات بأعلى مستوى من الأمان."
-    };
-
-    let isArabic = false;
-
-    langBtn.addEventListener("click", function () {
-        isArabic = !isArabic;
-        document.body.dir = isArabic ? "rtl" : "ltr";
-        document.documentElement.lang = isArabic ? "ar" : "en";
-        langBtn.textContent = isArabic ? "EN" : "AR";
-
-        document.getElementById("billed-to").textContent = isArabic ? translations["Billed To"] : "Billed To";
-        document.getElementById("phone-number").setAttribute("placeholder", isArabic ? translations["Phone Number"] : "Phone Number");
-        document.getElementById("country").setAttribute("placeholder", isArabic ? translations["Country"] : "Country");
-        document.getElementById("city").setAttribute("placeholder", isArabic ? translations["City"] : "City");
-        document.getElementById("address").setAttribute("placeholder", isArabic ? translations["Address"] : "Address");
-        document.getElementById("postal-code").setAttribute("placeholder", isArabic ? translations["Postal Code"] : "Postal Code");
-
-        document.getElementById("payment-details").textContent = isArabic ? translations["Payment Details"] : "Payment Details";
-
-        document.getElementById("cancel-btn").textContent = isArabic ? translations["Cancel"] : "Cancel";
-        document.getElementById("subscribe-btn").textContent = isArabic ? translations["Subscribe"] : "Subscribe";
-
-        document.getElementById("total").textContent = isArabic ? translations["Total"] : "Total";
-        document.getElementById("security-text").textContent = isArabic ? translations["Guaranteed to be safe & secure, ensuring that all transactions are protected with the highest level of security."] 
-        : "Guaranteed to be safe & secure, ensuring that all transactions are protected with the highest level of security.";
-
-        // تحويل نص السعر ليتوافق مع اللغة المختارة
-        const priceElement = document.querySelector(".price");
-        if (priceElement) {
-            priceElement.textContent = isArabic ? translations["$16 / Month"] : "$16 / Month";
-        }
-    });
-});
-
-    </script>
 
 </body>
 </html>

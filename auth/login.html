@@ -9,7 +9,7 @@
 <body>
 
 <section class="login-container">
-  <button id="lang-toggle" class="lang-btn">AR</button> <!-- زر تغيير اللغة -->
+  <button id="lang-toggle" class="lang-btn">AR</button> 
 
   <img
     loading="lazy"
@@ -75,9 +75,51 @@
         element.textContent = isArabic ? translations[originalText] || originalText : Object.keys(translations).find(key => translations[key] === originalText) || originalText;
       });
 
-      // تحديث الـ Placeholder
       emailInput.setAttribute("placeholder", isArabic ? translations["Email"] : "Email");
       passwordInput.setAttribute("placeholder", isArabic ? translations["Password"] : "Password");
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const loginForm = document.querySelector(".login-form");
+    
+    loginForm.addEventListener("submit", async function (event) {
+        event.preventDefault(); 
+        const email = document.getElementById("email-input").value.trim();
+        const password = document.getElementById("password-input").value.trim();
+      
+        if (!email || !password) {
+            alert("Please enter both email and password.");
+            return;
+        }
+
+        const requestBody = { email, password };
+
+        try {
+            const response = await fetch("http://localhost:3000/auth/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(requestBody)
+            });
+
+            if (!response.ok) {
+                throw new Error("Login failed. Please check your credentials.");
+            }
+
+            const data = await response.json();
+            alert("Login successful! Redirecting...");
+
+            localStorage.setItem("auth_token", data.token);
+            localStorage.setItem("loggedInUser", "true"); 
+
+            window.location.href = "../index.html"; 
+        } catch (error) {
+            alert(error.message);
+        }
     });
   });
 </script>
