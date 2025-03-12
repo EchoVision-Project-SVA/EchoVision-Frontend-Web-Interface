@@ -1,115 +1,128 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EchoVision</title>
-    <link rel="stylesheet" href="../public/css/download.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  </head>
-  <body>
-    <div class="landing-page">
-        <header class="header">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/f323aebef58277caab7dbe39260b9674dd4a09ac63495998aff7e633a7743b82?placeholderIfAbsent=true"
-              alt="EchoVision Logo"
-              loading="lazy"
-              class="logo"
-            />
-            <nav class="nav-container">
-              <ul class="nav-links">
-                <li><a href="../index.html" class="nav-link">Home</a></li>
-                <li><a href="../pricing/pricing.html" class="nav-link">Pricing</a></li>
-                <li><a href="../about_us/about.html" class="nav-link">About Us</a></li>
-              </ul>
-              <div class="auth-buttons">
-                <a href="../auth/login.html" class="login-btn">Login</a>
-                <a href="../auth/signup.html" class="signup-btn">Signup</a>
-                <button id="lang-toggle" class="lang-btn">AR</button>
-              </div>
-            </nav>
-          </header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EchoVision</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../public/css/download.css">
+</head>
+<body>
+  <div class="landing-page">
+    <header class="header">
+      <img
+        src="https://cdn.builder.io/api/v1/image/assets/TEMP/f323aebef58277caab7dbe39260b9674dd4a09ac63495998aff7e633a7743b82"
+        alt="EchoVision Logo"
+        class="logo"
+      />
+      <nav class="nav-container">
+        <ul class="nav-links">
+          <li>
+            <a href="../index.html" class="nav-link" data-translate="nav-home">Home</a>
+          </li>
+          <li>
+            <a href="../pricing/pricing.html" class="nav-link" data-translate="nav-pricing">Pricing</a>
+          </li>
+          <li>
+            <a href="../about_us/about.html" class="nav-link" data-translate="nav-about">About Us</a>
+          </li>
+        </ul>
+        <div class="auth-buttons">
 
-        <h1 class="main-heading" data-translate="main-heading">DOWNLOAD EchoVision</h1>
+          <a href="../dashboard/index.html" class="dashboard-btn" id="dashboard-btn" style="display: none;" data-translate="dashboard-btn">
+            <i class="ti ti-layout-dashboard"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="../auth/logout.html" class="logout-btn" id="logout-btn" data-translate="logout-btn">Logout</a>
+          <button id="lang-toggle" class="lang-btn" data-translate="lang-btn">AR</button>
+        </div>
+      </nav>
+    </header>
 
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/249d4f3308aa75934ce6658fccb4a4a664df9cc52fac96f4b9d9e35afe762b19?placeholderIfAbsent=true&apiKey=5334285123ac4d9d800ee080d967bbe4"
-            alt="EchoVision App" class="app-image"/>
+    <h1 class="main-heading" data-translate="main-heading">DOWNLOAD EchoVision</h1>
 
-        <section class="feature-section">
-            <a href="#" class="feature-box">
-                <div class="icon-container">
-                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ef1ba466c8dce1b4a20b734eda025c343685be67dcde405261fc2744248afeae?placeholderIfAbsent=true&apiKey=5334285123ac4d9d800ee080d967bbe4"
-                        alt="Feature Icon" class="feature-icon"/>
-                </div>
-            </a>
-            <a href="#" class="feature-box-secondary">
-                <div class="icon-container">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Android_logo_2019_%28stacked%29.svg"
-                        alt="Android Icon" class="feature-icon"/>
-                </div>
-            </a>
-        </section>
+    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/249d4f3308aa75934ce6658fccb4a4a664df9cc52fac96f4b9d9e35afe762b19"
+         alt="EchoVision App" class="app-image"/>
 
-        <footer class="main-footer">
-            <p data-translate="footer-text">© 2025, EchoVision, Inc. All Rights Reserved.</p>
-        </footer>
-    </div>
+    <section class="feature-section">
+      <a href="#" class="feature-box">
+        <div class="icon-container">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ef1ba466c8dce1b4a20b734eda025c343685be67dcde405261fc2744248afeae"
+               alt="Feature Icon" class="feature-icon"/>
+        </div>
+      </a>
+      <a href="#" class="feature-box-secondary">
+        <div class="icon-container">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Android_logo_2019_%28stacked%29.svg"
+               alt="Android Icon" class="feature-icon"/>
+        </div>
+      </a>
+    </section>
 
-    <script>
-        const translations = {
-            en: {
-                "main-heading": "DOWNLOAD EchoVision",
-                "nav-home": "Home",
-                "nav-pricing": "Pricing",
-                "nav-about": "About Us",
-                "login-btn": "Login",
-                "signup-btn": "Signup",
-                "lang-btn": "AR",
-                "footer-text": "© 2025, EchoVision, Inc. All Rights Reserved."
-            },
-            ar: {
-                "main-heading": "تحميل EchoVision",
-                "nav-home": "الرئيسية",
-                "nav-pricing": "الأسعار",
-                "nav-about": "حولنا",
-                "login-btn": "تسجيل الدخول",
-                "signup-btn": "إنشاء حساب",
-                "lang-btn": "EN",
-                "footer-text": "© 2025، EchoVision، Inc. جميع الحقوق محفوظة."
-            }
-        };
+    <footer class="main-footer">
+      <p data-translate="footer-text">© 2025, EchoVision, Inc. All Rights Reserved.</p>
+    </footer>
+  </div>
 
-        let currentLanguage = "en";
+  <script>
+    const translations = {
+      en: {
+        "main-heading": "DOWNLOAD EchoVision",
+        "nav-home": "Home",
+        "nav-pricing": "Pricing",
+        "nav-about": "About Us",
+        "logout-btn": "Logout",
+        "lang-btn": "AR",
+        "footer-text": "© 2025, EchoVision, Inc. All Rights Reserved.",
+        "dashboard-btn": "Dashboard"
+      },
+      ar: {
+        "main-heading": "تحميل EchoVision",
+        "nav-home": "الرئيسية",
+        "nav-pricing": "الأسعار",
+        "nav-about": "حولنا",
+        "logout-btn": "تسجيل خروج",
+        "lang-btn": "EN",
+        "footer-text": "© 2025، EchoVision، Inc. جميع الحقوق محفوظة.",
+        "dashboard-btn": "لوحة التحكم"
+      }
+    };
 
-        function updateLanguage(lang) {
-            document.querySelectorAll("[data-translate]").forEach(el => {
-                const key = el.getAttribute("data-translate");
-                if (translations[lang][key]) {
-                    el.textContent = translations[lang][key];
-                }
-            });
+    let currentLanguage = "en";
 
-
-            document.documentElement.setAttribute("lang", lang);
-            document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
-
-
-            document.querySelector(".lang-btn").textContent = translations[lang]["lang-btn"];
-
-
-            document.body.style.direction = lang === "ar" ? "rtl" : "ltr";
-            document.body.style.textAlign = lang === "ar" ? "right" : "left";
+    function updateLanguage(lang) {
+      document.querySelectorAll("[data-translate]").forEach(el => {
+        const key = el.getAttribute("data-translate");
+        if (translations[lang][key]) {
+          el.textContent = translations[lang][key];
         }
+      });
 
-        document.querySelector(".lang-btn").addEventListener("click", () => {
-            currentLanguage = currentLanguage === "en" ? "ar" : "en";
-            updateLanguage(currentLanguage);
-        });
+      document.documentElement.setAttribute("lang", lang);
+      document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
 
+      document.querySelector(".lang-btn").textContent = translations[lang]["lang-btn"];
+      document.getElementById("logout-btn").textContent = translations[lang]["logout-btn"];
 
-        document.addEventListener("DOMContentLoaded", () => {
-            updateLanguage(currentLanguage);
-        });
-    </script>
-  </body>
+      document.body.style.direction = lang === "ar" ? "rtl" : "ltr";
+      document.body.style.textAlign = lang === "ar" ? "right" : "left";
+    }
+
+    document.querySelector(".lang-btn").addEventListener("click", () => {
+      currentLanguage = currentLanguage === "en" ? "ar" : "en";
+      updateLanguage(currentLanguage);
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      updateLanguage(currentLanguage);
+
+      let isAdmin = true; 
+      if (isAdmin) {
+        document.getElementById("dashboard-btn").style.display = "inline-block";
+      } else {
+        document.getElementById("dashboard-btn").style.display = "none";
+      }
+    });
+  </script>
+</body>
 </html>

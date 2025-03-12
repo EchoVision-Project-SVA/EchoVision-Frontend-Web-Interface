@@ -1,58 +1,100 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title data-translate="page-title">EchoVision</title>
-    <link rel="stylesheet" href="public/css/index.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-translate="page-title">EchoVision</title>
+  <link rel="stylesheet" href="public/css/index.css" />
+  <style>
+
+ .hidden {
+      display: none !important;
+    }
+
+    .dashboard-btn {
+      background-color: #ff9800;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease-in-out;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+      margin-right: 10px;
+    }
+    .dashboard-btn:hover {
+      background-color: #e68900;
+      transform: scale(1.05);
+    }
+    .dashboard-btn:active {
+      transform: scale(0.95);
+    }
+  </style>
 </head>
 <body>
-    <header class="header">
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f323aebef58277caab7dbe39260b9674dd4a09ac63495998aff7e633a7743b82"
-            alt="EchoVision Logo" loading="lazy" class="logo" />
-        <nav class="nav-container">
-            <ul class="nav-links">
-                <li><a href="index.html" class="nav-link" data-translate="nav-home">Home</a></li>
-                <li><a href="pricing/pricing.html" class="nav-link" data-translate="nav-pricing">Pricing</a></li>
-                <li><a href="about_us/about.html" class="nav-link" data-translate="nav-about">About Us</a></li>
-            </ul>
-            <div class="auth-buttons" id="auth-buttons">
-                <a href="auth/login.html" class="login-btn" data-translate="login-btn">Login</a>
-                <a href="auth/signup.html" class="signup-btn" data-translate="signup-btn">Signup</a>
-            </div>
-            <a href="#" class="logout-btn" id="logout-btn" data-translate="logout-btn" style="display:none;">Logout</a>
-            <a href="#" class="lang-btn" id="lang-btn" data-translate="lang-btn">AR</a> <!-- زر اللغة دائمًا مرئي -->
-        </nav>
-    </header>
+  <header class="header">
+    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f323aebef58277caab7dbe39260b9674dd4a09ac63495998aff7e633a7743b82"
+         alt="EchoVision Logo" loading="lazy" class="logo" />
+    <nav class="nav-container">
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link" data-translate="nav-home">Home</a></li>
+        <li><a href="pricing/pricing.html" class="nav-link" data-translate="nav-pricing">Pricing</a></li>
+        <li><a href="about_us/about.html" class="nav-link" data-translate="nav-about">About Us</a></li>
+      </ul>
 
-    <main class="main-content">
-        <section class="hero-section">
-            <h1 class="hero-title" data-translate="hero-title">Revolutionizing Communication with AI-Powered Lip Reading</h1>
-            <p class="hero-description" data-translate="hero-description">
-                AI-powered lip reading for seamless, accurate, and silent communication.
-            </p>
+      <div class="auth-buttons" id="auth-buttons">
+        <a href="auth/login.html" class="login-btn" data-translate="login-btn">Login</a>
+        <a href="auth/signup.html" class="signup-btn" data-translate="signup-btn">Signup</a>
 
-            <div class="hero-images">
-                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/fe2b4079ff766206364057c3d0284b031c0874d0f8239d2d45211982ae3874a6"
-                    class="hero-bg" alt="Background" />
-                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c300e2728e5737d4207c08dbf8796946e35e1f1ecd713bf3e6351307ffc6aca0"
-                    class="hero-main" alt="EchoVision Demo" />
-            </div>
+        <button onclick="adminLogin()" style="margin-left:10px;">Admin Login Demo</button>
+      </div>
 
-            <div class="new-button-container">
-                <a href="download/download.html" class="get-app-btn" data-translate="get-app-btn">Get App</a>
-                <a href="camera/camera.html" class="get-app-btn" data-translate="start-now">Start Now</a>
-            </div>
-        </section>
-    </main>
+      <a href="dashboard/index.html" class="dashboard-btn hidden" id="dashboard-btn" data-translate="dashboard-btn">Dashboard</a>
 
-    <footer class="site-footer">
-        <p class="copyright" data-translate="copyright">© 2025, EchoVision, Inc. All Rights Reserved.</p>
-    </footer>
+      <a href="#" class="logout-btn hidden" id="logout-btn" data-translate="logout-btn">Logout</a>
 
-    <script>
-const translations = {
-    en: {
+      <a href="#" class="lang-btn" id="lang-btn" data-translate="lang-btn">AR</a>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <section class="hero-section">
+      <h1 class="hero-title" data-translate="hero-title">
+        Revolutionizing Communication with AI-Powered Lip Reading
+      </h1>
+      <p class="hero-description" data-translate="hero-description">
+        AI-powered lip reading for seamless, accurate, and silent communication.
+      </p>
+
+      <div class="hero-images">
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/fe2b4079ff766206364057c3d0284b031c0874d0f8239d2d45211982ae3874a6"
+             class="hero-bg" alt="Background" />
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c300e2728e5737d4207c08dbf8796946e35e1f1ecd713bf3e6351307ffc6aca0"
+             class="hero-main" alt="EchoVision Demo" />
+      </div>
+
+      <div class="new-button-container">
+        <a href="download/download.html" class="get-app-btn" data-translate="get-app-btn">Get App</a>
+        <a href="camera/camera.html" class="get-app-btn" data-translate="start-now">Start Now</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="copyright" data-translate="copyright">
+      © 2025, EchoVision, Inc. All Rights Reserved.
+    </p>
+  </footer>
+
+  <script>
+    const translations = {
+      en: {
         "page-title": "EchoVision",
         "nav-home": "Home",
         "nav-pricing": "Pricing",
@@ -60,14 +102,15 @@ const translations = {
         "login-btn": "Login",
         "signup-btn": "Signup",
         "logout-btn": "Logout",
+        "dashboard-btn": "Dashboard",
         "lang-btn": "AR",
         "hero-title": "Revolutionizing Communication with AI-Powered Lip Reading",
         "hero-description": "AI-powered lip reading for seamless, accurate, and silent communication.",
         "get-app-btn": "Get App",
         "start-now": "Start Now",
         "copyright": "© 2025, EchoVision, Inc. All Rights Reserved."
-    },
-    ar: {
+      },
+      ar: {
         "page-title": "إيكو ڤيجن",
         "nav-home": "الرئيسية",
         "nav-pricing": "الأسعار",
@@ -75,55 +118,74 @@ const translations = {
         "login-btn": "تسجيل الدخول",
         "signup-btn": "إنشاء حساب",
         "logout-btn": "تسجيل الخروج",
+        "dashboard-btn": "لوحة التحكم",
         "lang-btn": "EN",
         "hero-title": "ثورة في التواصل باستخدام قراءة الشفاه بالذكاء الاصطناعي",
         "hero-description": "قراءة الشفاه بالذكاء الاصطناعي لتواصل سلس، دقيق، وصامت.",
         "get-app-btn": "احصل على التطبيق",
         "start-now": "ابدأ الآن",
         "copyright": "© 2025، إيكو ڤيجن، جميع الحقوق محفوظة."
-    }
-};
+      }
+    };
 
-function updateLanguage(lang) {
-    document.documentElement.lang = lang;
-    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
-    document.getElementById("lang-btn").textContent = translations[lang]["lang-btn"];
+    function updateLanguage(lang) {
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+      document.getElementById("lang-btn").textContent = translations[lang]["lang-btn"];
 
-    document.querySelectorAll("[data-translate]").forEach((el) => {
+      document.querySelectorAll("[data-translate]").forEach((el) => {
         const key = el.getAttribute("data-translate");
         if (translations[lang][key]) {
-            el.textContent = translations[lang][key];
+          el.textContent = translations[lang][key];
         }
-    });
+      });
 
-    localStorage.setItem("selectedLanguage", lang);
-}
+      localStorage.setItem("selectedLanguage", lang);
+    }
 
-document.addEventListener("DOMContentLoaded", function () {
-    const savedLang = localStorage.getItem("selectedLanguage") || "en";
-    updateLanguage(savedLang);
+    function adminLogin() {
+      localStorage.setItem("loggedInUser", "adminUser");
+      localStorage.setItem("isAdmin", "true");
+      console.log("Admin login triggered:", localStorage.getItem("loggedInUser"), localStorage.getItem("isAdmin"));
+      window.location.reload();
+    }
 
-    document.getElementById("lang-btn").addEventListener("click", function () {
+    document.addEventListener("DOMContentLoaded", function () {
+      const savedLang = localStorage.getItem("selectedLanguage") || "en";
+      updateLanguage(savedLang);
+
+      document.getElementById("lang-btn").addEventListener("click", function () {
         const newLang = document.documentElement.lang === "en" ? "ar" : "en";
         updateLanguage(newLang);
-    });
+      });
 
-    function checkLoginStatus() {
-        const isLoggedIn = localStorage.getItem("loggedInUser");
-        if (isLoggedIn) {
-            document.getElementById("auth-buttons").style.display = "none";
-            document.getElementById("logout-btn").style.display = "block";
+      function checkLoginStatus() {
+        const loggedInUser = localStorage.getItem("loggedInUser");
+        console.log("loggedInUser:", loggedInUser);
+        if (loggedInUser) {
+
+            document.getElementById("auth-buttons").classList.add("hidden");
+
+            document.getElementById("logout-btn").classList.remove("hidden");
+
+            if (localStorage.getItem("isAdmin") === "true") {
+            console.log("User is admin");
+            document.getElementById("dashboard-btn").classList.remove("hidden");
+          } else {
+            console.log("User is not admin");
+          }
         }
-    }
+      }
 
-    function logoutUser() {
+      function logoutUser() {
         localStorage.removeItem("loggedInUser");
+        localStorage.removeItem("isAdmin");
         window.location.reload();
-    }
+      }
 
-    checkLoginStatus();
-    document.getElementById("logout-btn").addEventListener("click", logoutUser);
-});
-    </script>
+      checkLoginStatus();
+      document.getElementById("logout-btn").addEventListener("click", logoutUser);
+    });
+  </script>
 </body>
 </html>

@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About EchoVision</title>
-
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="../public/css/about.css">
@@ -21,39 +20,35 @@
     />
     <nav class="nav-container">
       <ul class="nav-links">
-        <li><a href="../index.html" class="nav-link" id="home-link">Home</a></li>
-        <li><a href="../pricing/pricing.html" class="nav-link" id="pricing-link">Pricing</a></li>
-        <li><a href="../about_us/about.html" class="nav-link" id="about-link">About Us</a></li>
+        <li><a href="../index.html" class="nav-link" id="home-link" data-translate="home-link">Home</a></li>
+        <li><a href="../pricing/pricing.html" class="nav-link" id="pricing-link" data-translate="pricing-link">Pricing</a></li>
+        <li><a href="../about_us/about.html" class="nav-link" id="about-link" data-translate="about-link">About Us</a></li>
       </ul>
       <div class="auth-buttons">
-        <a href="../auth/login.html" class="login-btn" id="login-btn">Login</a>
-        <a href="../auth/signup.html" class="signup-btn" id="signup-btn">Signup</a>
-        <button id="lang-toggle" class="lang-btn">AR</button>
+        <a href="../dashboard/index.html" class="dashboard-btn" id="dashboard-btn" style="display: none;">
+          <i class="ti ti-layout-dashboard"></i> <span data-translate="dashboard-btn">Dashboard</span>
+        </a>
+        <a href="../index.html" class="logout-btn" id="logout-btn" data-translate="logout-btn">Logout</a>
+        <button id="lang-toggle" class="lang-btn" data-translate="lang-toggle">AR</button>
       </div>
     </nav>
   </header>
 
   <main class="main-content">
     <article class="content-wrapper">
-      <h1 class="title">About EchoVision</h1>
+      <h1 class="title" data-translate="title">About EchoVision</h1>
       <section class="description">
-        <p>
-          We are revolutionizing speech recognition with AI-powered lip reading,
-          enabling seamless communication in any environment. Our technology
-          enhances accessibility for the hearing impaired, improves
-          speech-to-text accuracy, and enables silent, secure communication.
+        <p id="description-1" data-translate="description-1">
+          We are revolutionizing speech recognition with AI-powered lip reading, enabling seamless communication in any environment. Our technology enhances accessibility for the hearing impaired, improves speech-to-text accuracy, and enables silent, secure communication.
         </p>
-        <p>
-          Trusted by individuals and organizations worldwide, our cutting-edge
-          solution bridges the gap between spoken language and technology. Built
-          on advanced AI and deep learning, we are committed to making
-          communication more inclusive and efficient.
+        <p id="description-2" data-translate="description-2">
+          Trusted by individuals and organizations worldwide, our cutting-edge solution bridges the gap between spoken language and technology. Built on advanced AI and deep learning, we are committed to making communication more inclusive and efficient.
         </p>
       </section>
     </article>
   </main>
 
-  <footer class="footer">© 2025, EchoVision, Inc. All Rights Reserved.</footer>
+  <footer class="footer" data-translate="footer-text">© 2025, EchoVision, Inc. All Rights Reserved.</footer>
 </div>
 
 <script>
@@ -62,29 +57,37 @@
       "home-link": "Home",
       "pricing-link": "Pricing",
       "about-link": "About Us",
-      "login-btn": "Login",
-      "signup-btn": "Signup",
-      "lang-toggle": "AR"
+      "logout-btn": "Logout",
+      "dashboard-btn": "Dashboard",
+      "lang-toggle": "AR",
+      "title": "About EchoVision",
+      "description-1": "We are revolutionizing speech recognition with AI-powered lip reading, enabling seamless communication in any environment. Our technology enhances accessibility for the hearing impaired, improves speech-to-text accuracy, and enables silent, secure communication.",
+      "description-2": "Trusted by individuals and organizations worldwide, our cutting-edge solution bridges the gap between spoken language and technology. Built on advanced AI and deep learning, we are committed to making communication more inclusive and efficient.",
+      "footer-text": "© 2025, EchoVision, Inc. All Rights Reserved."
     },
     ar: {
       "home-link": "الرئيسية",
       "pricing-link": "الأسعار",
       "about-link": "من نحن",
-      "login-btn": "تسجيل الدخول",
-      "signup-btn": "إنشاء حساب",
-      "lang-toggle": "EN"
+      "logout-btn": "تسجيل الخروج",
+      "dashboard-btn": "لوحة التحكم",
+      "lang-toggle": "EN",
+      "title": "عن EchoVision",
+      "description-1": "نحن نقوم بثورة في مجال التعرف على الكلام من خلال تقنية قراءة الشفاه المدعومة بالذكاء الاصطناعي، مما يتيح تواصلًا سلسًا في أي بيئة. تعمل تقنيتنا على تحسين إمكانية الوصول لضعاف السمع، وتعزيز دقة تحويل الصوت إلى نص، وتمكين التواصل الصامت والآمن.",
+      "description-2": "موثوق به من قبل الأفراد والمؤسسات في جميع أنحاء العالم، يقدم حلنا المتطور جسرًا بين اللغة المنطوقة والتكنولوجيا. تم تطويره باستخدام الذكاء الاصطناعي المتقدم والتعلم العميق، ونحن ملتزمون بجعل التواصل أكثر شمولية وكفاءة.",
+      "footer-text": "© 2025، EchoVision، Inc. جميع الحقوق محفوظة."
     }
   };
 
   let currentLanguage = "en";
 
   function updateLanguage(lang) {
-    document.querySelectorAll("[id]").forEach((el) => {
-      if (translations[lang][el.id]) {
-        el.textContent = translations[lang][el.id];
+    document.querySelectorAll("[data-translate]").forEach((el) => {
+      const key = el.getAttribute("data-translate");
+      if (translations[lang][key]) {
+        el.textContent = translations[lang][key];
       }
     });
-
     document.documentElement.setAttribute("lang", lang);
     document.body.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
   }
@@ -94,6 +97,13 @@
     updateLanguage(currentLanguage);
   });
 
+  document.addEventListener("DOMContentLoaded", () => {
+    updateLanguage(currentLanguage);
+    let isAdmin = true;
+    if (isAdmin) {
+      document.getElementById("dashboard-btn").style.display = "inline-block";
+    }
+  });
 </script>
 
 </body>

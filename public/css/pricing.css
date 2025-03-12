@@ -13,8 +13,7 @@ html, body {
   padding: 20px 60px;
   justify-content: space-between;
   width: 100%;
-  box-sizing: border-box; 
-  margin: 0;
+  box-sizing: border-box;
 }
 
 .logo {
@@ -41,7 +40,7 @@ html, body {
   list-style: none;
   padding: 0;
   margin: 0;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 .nav-link {
@@ -50,8 +49,8 @@ html, body {
   padding: 8px 18px;
   border-radius: 9999px;
   text-decoration: none;
-  font-weight: bold; 
-  box-sizing: border-box; 
+  font-weight: bold;
+  box-sizing: border-box;
 }
 
 .auth-buttons {
@@ -64,55 +63,107 @@ html, body {
 .login-btn {
   background-color: rgb(86, 90, 221);
   color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s;
+}
+
+.login-btn:hover {
+  background-color: rgb(72, 81, 196);
+  transform: scale(1.05);
+}
+
+.signup-btn {
+  background-color: rgb(239, 240, 255);
+  color: #000;
+  padding: 12px 24px;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s;
+}
+
+.logout-btn {
+  background-color: rgb(207, 0, 0);
+  color: #ffffff;
   padding: 14px 17px;
   border-radius: 9999px;
   font-size: 15px;
   letter-spacing: 0.08px;
   text-decoration: none;
-  font-weight: bold; 
-  box-sizing: border-box;
 }
 
-.signup-btn {
-  background-color: rgb(239, 240, 255);
-  color: #000001;
-  padding: 14px 18px;
-  border-radius: 9999px;
-  font-size: 15px;
-  letter-spacing: 0.08px;
-  text-decoration: none;
-  font-weight: bold; 
-  box-sizing: border-box; 
+.signup-btn:hover {
+  background-color: rgb(220, 230, 255);
+  transform: scale(1.05);
 }
 
 .lang-btn {
-  background-color: rgb(142, 135, 243); 
-  color: #ffffff; 
-  padding: 10px 14px; 
+  background-color: rgb(142, 135, 243);
+  color: #ffffff;
+  padding: 10px 16px;
   border-radius: 8px;
-  font-size: 14px; 
-  font-weight: bold; 
-  text-decoration: none; 
-  transition: all 0.3s ease-in-out; 
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s;
 }
 
 .lang-btn:hover {
-  background-color: rgb(110, 103, 220); 
+  background-color: rgb(110, 103, 220);
+  transform: scale(1.05);
+}
+
+.dashboard-btn {
+  background-color: #ff9800;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease-in-out;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-btn i {
+  font-size: 18px;
+}
+
+.dashboard-btn:hover {
+  background-color: #e68900;
+  transform: scale(1.05);
+}
+
+.dashboard-btn:active {
+  transform: scale(0.95);
 }
 
 @media (max-width: 991px) {
   .header {
     padding: 20px 40px;
   }
-
   .nav-container {
     margin-left: 40px;
   }
-
   .nav-links {
     gap: 40px;
   }
-
   .auth-buttons {
     gap: 40px;
   }
@@ -122,11 +173,9 @@ html, body {
   .header {
     padding: 20px;
   }
-
   .nav-links {
     display: none;
   }
-
   .auth-buttons {
     display: none;
   }
@@ -215,18 +264,18 @@ html, body {
 
 .get-started-btn {
   margin-top: 24px;
-  padding: 12px 20px; 
-  border: 2px solid #000; 
-  border-radius: 8px; 
+  padding: 12px 20px;
+  border: 2px solid #000;
+  border-radius: 8px;
   color: #000;
   font-family: "Inter", sans-serif;
-  font-size: 18px; 
+  font-size: 18px;
   font-weight: 600;
   text-align: center;
   cursor: pointer;
   background-color: #fff;
   width: 100%;
-  transition: all 0.3s ease-in-out; 
+  transition: all 0.3s ease-in-out;
 }
 
 .get-started-btn:hover {

@@ -117,7 +117,6 @@ html, body {
   border: none;
 }
 
-/* 📌 صندوق Total بالكامل */
 .right-section {
   border-radius: 12px;
   background-color: #edf2f5;
@@ -150,7 +149,6 @@ html, body {
   margin-bottom: 20px;
 }
 
-/* 🖼️ **تحسين وضع الصورة لتكون في المنتصف داخل البوردر** */
 .image-box {
   width: 100%;
   max-width: 250px;

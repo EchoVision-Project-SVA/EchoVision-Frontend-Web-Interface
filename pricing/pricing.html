@@ -10,97 +10,117 @@
 </head>
 <body>
 
-<header class="header">
-  <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f323aebef58277caab7dbe39260b9674dd4a09ac63495998aff7e633a7743b82?placeholderIfAbsent=true"
-    alt="EchoVision Logo" loading="lazy" class="logo"/>
-  
-  <nav class="nav-container">
-    <ul class="nav-links">
-      <li><a href="../index.html" class="nav-link">Home</a></li>
-      <li><a href="../pricing/pricing.html" class="nav-link">Pricing</a></li>
-      <li><a href="../about_us/about.html" class="nav-link">About Us</a></li>
-    </ul>
-    <div class="auth-buttons">
-      <a href="../auth/login.html" class="login-btn">Login</a>
-      <a href="../auth/signup.html" class="signup-btn">Signup</a>
-      <button id="lang-toggle" class="lang-btn">AR</button>
-    </div>
-  </nav>
-</header>
+  <header class="header">
+    <img
+      src="https://cdn.builder.io/api/v1/image/assets/TEMP/f323aebef58277caab7dbe39260b9674dd4a09ac63495998aff7e633a7743b82"
+      alt="EchoVision Logo"
+      loading="lazy"
+      class="logo"
+    />
+    <nav class="nav-container">
+      <ul class="nav-links">
+        <li>
+          <a href="../index.html" class="nav-link" id="home-link" data-translate="home-link">Home</a>
+        </li>
+        <li>
+          <a href="../pricing/pricing.html" class="nav-link" id="pricing-link" data-translate="pricing-link">Pricing</a>
+        </li>
+        <li>
+          <a href="../about_us/about.html" class="nav-link" id="about-link" data-translate="about-link">About Us</a>
+        </li>
+      </ul>
+      <div class="auth-buttons">
 
-<main class="main-content">
-  <section class="hero-section">
-    <h1 id="hero-title" class="hero-title">Flexible Pricing for Every Need.</h1>
-    <p id="hero-subtitle" class="hero-subtitle">
-      Choose between monthly or yearly plans—tailored for your growth.
-    </p>
-  </section>
-
-  <section class="pricing-container">
-    <article class="pricing-card">
-      <div class="plan-details">
-        <h2 id="plan-monthly" class="plan-name">Monthly</h2>
-        <div class="price-container">
-          <p id="price-monthly" class="price">$39</p>
-          <span id="discount-monthly" class="discount">-15%</span>
-        </div>
+        <a href="../dashboard/index.html" class="dashboard-btn" id="dashboard-btn" style="display: none;">
+          <i class="ti ti-layout-dashboard"></i>
+          <span data-translate="dashboard-btn">Dashboard</span>
+        </a>
+        <a href="../auth/logout.html" class="logout-btn" id="logout-btn" data-translate="logout-btn">Logout</a>
+        <button id="lang-toggle" class="lang-btn" data-translate="lang-toggle">AR</button>
       </div>
-      <button id="btn-monthly" class="get-started-btn" onclick="window.location.href='../checkout/checkout.html'">Get Started</button>
-    </article>
+    </nav>
+  </header>
 
-    <article class="pricing-card-dark">
-      <div class="plan-details">
-        <h2 id="plan-yearly" class="plan-name-2">Yearly</h2>
-        <div class="price-container">
-          <p id="price-yearly" class="price-2">$300</p>
-          <span id="discount-yearly" class="discount-2">-15%</span>
+  <main class="main-content">
+    <section class="hero-section">
+      <h1 id="hero-title" class="hero-title">Flexible Pricing for Every Need.</h1>
+      <p id="hero-subtitle" class="hero-subtitle">
+        Choose between monthly or yearly plans—tailored for your growth.
+      </p>
+    </section>
+
+    <section class="pricing-container">
+      <article class="pricing-card">
+        <div class="plan-details">
+          <h2 id="plan-monthly" class="plan-name">Monthly</h2>
+          <div class="price-container">
+            <p id="price-monthly" class="price">$39</p>
+            <span id="discount-monthly" class="discount">-15%</span>
+          </div>
         </div>
-      </div>
-      <button id="btn-yearly" class="get-started-btn" onclick="window.location.href='../checkout/checkout.html'">Get Started</button>
-    </article>
-  </section>
-</main>
+        <button id="btn-monthly" class="get-started-btn" onclick="window.location.href='../checkout/checkout.html'">Get Started</button>
+      </article>
 
-<footer class="footer">
-  <p id="footer-text">© 2025, EchoVision, Inc. All Rights Reserved.</p>
-</footer>
+      <article class="pricing-card-dark">
+        <div class="plan-details">
+          <h2 id="plan-yearly" class="plan-name-2">Yearly</h2>
+          <div class="price-container">
+            <p id="price-yearly" class="price-2">$300</p>
+            <span id="discount-yearly" class="discount-2">-15%</span>
+          </div>
+        </div>
+        <button id="btn-yearly" class="get-started-btn" onclick="window.location.href='../checkout/checkout.html'">Get Started</button>
+      </article>
+    </section>
+  </main>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const langBtn = document.getElementById("lang-toggle");
+  <footer class="footer">
+    <p id="footer-text">© 2025, EchoVision, Inc. All Rights Reserved.</p>
+  </footer>
 
-    const translations = {
-        "Home": "الرئيسية",
-        "Pricing": "الأسعار",
-        "About Us": "معلومات عنا",
-        "Login": "تسجيل الدخول",
-        "Signup": "إنشاء حساب",
-        "Flexible Pricing for Every Need.": "أسعار مرنة تناسب الجميع.",
-        "Choose between monthly or yearly plans—tailored for your growth.": "اختر بين الاشتراك الشهري أو السنوي وفقًا لاحتياجاتك.",
-        "Monthly": "شهريًا",
-        "Yearly": "سنويًا",
-        "$39": "٣٩ دولار",
-        "$300": "٣٠٠ دولار",
-        "-15%": "-١٥٪",
-        "Get Started": "ابدأ الآن",
-        "© 2025, EchoVision, Inc. All Rights Reserved.": "© 2025، شركة EchoVision. جميع الحقوق محفوظة."
-    };
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const langBtn = document.getElementById("lang-toggle");
 
-    let isArabic = false;
+      const translations = {
+          "Home": "الرئيسية",
+          "Pricing": "الأسعار",
+          "About Us": "معلومات عنا",
+          "Logout": "تسجيل الخروج",
+          "Flexible Pricing for Every Need.": "أسعار مرنة تناسب الجميع.",
+          "Choose between monthly or yearly plans—tailored for your growth.": "اختر بين الاشتراك الشهري أو السنوي وفقًا لاحتياجاتك.",
+          "Monthly": "شهريًا",
+          "Yearly": "سنويًا",
+          "$39": "٣٩ دولار",
+          "$300": "٣٠٠ دولار",
+          "-15%": "-١٥٪",
+          "Get Started": "ابدأ الآن",
+          "© 2025, EchoVision, Inc. All Rights Reserved.": "© 2025، شركة EchoVision. جميع الحقوق محفوظة.",
+          "Dashboard": "لوحة التحكم"
+      };
 
-    langBtn.addEventListener("click", function () {
-        isArabic = !isArabic;
-        document.body.dir = isArabic ? "rtl" : "ltr";
-        document.documentElement.lang = isArabic ? "ar" : "en";
-        langBtn.textContent = isArabic ? "EN" : "AR";
-        document.querySelectorAll(".nav-link, .login-btn, .signup-btn, .hero-title, .hero-subtitle, .plan-name, .plan-name-2, .price, .price-2, .discount, .discount-2, .get-started-btn, .footer p")
-            .forEach(element => {
-                const originalText = element.textContent.trim();
-                element.textContent = isArabic ? translations[originalText] || originalText : Object.keys(translations).find(key => translations[key] === originalText) || originalText;
-            });
+      let isArabic = false;
+
+      langBtn.addEventListener("click", function () {
+          isArabic = !isArabic;
+          document.body.dir = isArabic ? "rtl" : "ltr";
+          document.documentElement.lang = isArabic ? "ar" : "en";
+          langBtn.textContent = isArabic ? "EN" : "AR";
+          document.querySelectorAll(".nav-link, .logout-btn, .hero-title, .hero-subtitle, .plan-name, .plan-name-2, .price, .price-2, .discount, .discount-2, .get-started-btn, .footer p")
+              .forEach(element => {
+                  const originalText = element.textContent.trim();
+                  element.textContent = isArabic ? translations[originalText] || originalText : Object.keys(translations).find(key => translations[key] === originalText) || originalText;
+              });
+      });
+
+      let isAdmin = true; 
+      if (isAdmin) {
+          document.getElementById("dashboard-btn").style.display = "inline-block";
+      } else {
+          document.getElementById("dashboard-btn").style.display = "none";
+      }
     });
-});
-</script>
+  </script>
 
 </body>
 </html>

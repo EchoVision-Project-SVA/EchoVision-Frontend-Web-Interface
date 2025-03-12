@@ -1,137 +1,146 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EchoVision</title>
-    <link rel="stylesheet" href="../public/css/camera.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Work+Sans:wght@700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EchoVision - Camera</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Work+Sans:wght@700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../public/css/camera.css">
+</head>
+<body>
+  <div class="container">
     <header class="header">
-      <img
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/f323aebef58277caab7dbe39260b9674dd4a09ac63495998aff7e633a7743b82"
-        alt="EchoVision Logo"
-        loading="lazy"
-        class="logo"
-      />
+      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f323aebef58277caab7dbe39260b9674dd4a09ac63495998aff7e633a7743b82" alt="EchoVision Logo" loading="lazy" class="logo">
       <nav class="nav-container">
         <ul class="nav-links">
-          <li><a href="../index.html" class="nav-link" id="home-link">Home</a></li>
-          <li><a href="../pricing/pricing.html" class="nav-link" id="pricing-link">Pricing</a></li>
-          <li><a href="../about_us/about.html" class="nav-link" id="about-link">About Us</a></li>
+          <li>
+            <a href="../index.html" class="nav-link" id="home-link" data-translate="home-link">Home</a>
+          </li>
+          <li>
+            <a href="../pricing/pricing.html" class="nav-link" id="pricing-link" data-translate="pricing-link">Pricing</a>
+          </li>
+          <li>
+            <a href="../about_us/about.html" class="nav-link" id="about-link" data-translate="about-link">About Us</a>
+          </li>
         </ul>
         <div class="auth-buttons">
-          <a href="../auth/login.html" class="login-btn" id="login-btn">Login</a>
-          <a href="../auth/signup.html" class="signup-btn" id="signup-btn">Signup</a>
-          <button id="lang-toggle" class="lang-btn">AR</button>
+          <a href="../dashboard/index.html" class="dashboard-btn" id="dashboard-btn" style="display: none;">
+            <i class="ti ti-layout-dashboard"></i>
+            <span data-translate="dashboard-btn">Dashboard</span>
+          </a>
+          <a href="../auth/logout.html" class="logout-btn" id="logout-btn" data-translate="logout-btn">Logout</a>
+          <button id="lang-toggle" class="lang-btn" data-translate="lang-toggle">AR</button>
         </div>
       </nav>
     </header>
-
-    <div class="main-container">
+    
+    <div class="main-content">
       <div class="video-container">
         <video id="video" autoplay></video>
-        <img
-          id="hero-image"
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/4faeb17bb11e9f85e5e392d384ef20739b1e38062628978f3676acb6fdbfa6c0"
-          alt="Hero Image"
-          class="hero-image"
-        />
+        <img id="hero-image" src="https://cdn.builder.io/api/v1/image/assets/TEMP/4faeb17bb11e9f85e5e392d384ef20739b1e38062628978f3676acb6fdbfa6c0" alt="Hero Image" class="hero-image">
       </div>
-
+      
       <section class="content-section">
         <div id="caption-box" class="caption-box">
-          <p id="caption-text">What are you saying?</p>
+          <p id="caption-text">What are you saying</p>
         </div>
       </section>
-
+      
       <div class="microphone-container">
         <button id="camera-button" class="microphone-button"></button>
       </div>
     </div>
-
+    
     <footer class="footer">
       <p id="footer-text">© 2025, EchoVision, Inc. All Rights Reserved.</p>
     </footer>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-          const cameraButton = document.getElementById("camera-button");
-          const video = document.getElementById("video");
-          const heroImage = document.getElementById("hero-image");
-          let isRecording = false;
-          let stream = null;
+  </div>
   
-          cameraButton.addEventListener("click", async () => {
-              if (!isRecording) {
-                  try {
-                      stream = await navigator.mediaDevices.getUserMedia({ video: true });
-                      video.srcObject = stream;
-                      video.style.display = "block";
-                      heroImage.style.display = "none";
-                      cameraButton.classList.add("recording");
-                  } catch (error) {
-                      console.error("Error accessing camera:", error);
-                  }
-              } else {
-                  if (stream) {
-                      stream.getTracks().forEach(track => track.stop());
-                  }
-                  video.style.display = "none";
-                  heroImage.style.display = "block";
-                  cameraButton.classList.remove("recording");
-              }
-  
-              isRecording = !isRecording;
-          });
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("menu-toggle")?.addEventListener("click", () => {
+        document.getElementById("mobile-menu")?.classList.toggle("open");
       });
-  </script>
-  
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const langBtn = document.getElementById("lang-toggle");
-        const translations = {
-          "en": {
-            "home": "Home",
-            "pricing": "Pricing",
-            "about": "About Us",
-            "login": "Login",
-            "signup": "Signup",
-            "caption": "What are you saying?",
-            "footer": "© 2025, EchoVision, Inc. All Rights Reserved."
-          },
-          "ar": {
-            "home": "الرئيسية",
-            "pricing": "الأسعار",
-            "about": "معلومات عنا",
-            "login": "تسجيل الدخول",
-            "signup": "إنشاء حساب",
-            "caption": "ماذا تقول؟",
-            "footer": "© 2025, شركة EchoVision، جميع الحقوق محفوظة."
+      
+      const cameraButton = document.getElementById("camera-button");
+      const video = document.getElementById("video");
+      const heroImage = document.getElementById("hero-image");
+      let isRecording = false;
+      let stream = null;
+      
+      cameraButton.addEventListener("click", async () => {
+        if (!isRecording) {
+          try {
+            stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            video.srcObject = stream;
+            video.style.display = "block";
+            heroImage.style.display = "none";
+            cameraButton.classList.add("recording");
+          } catch (error) {
+            console.error("Error accessing camera:", error);
           }
-        };
-
-        let isArabic = false;
-
-        langBtn.addEventListener("click", () => {
-          isArabic = !isArabic;
-          document.body.dir = isArabic ? "rtl" : "ltr";
-          document.documentElement.lang = isArabic ? "ar" : "en";
-          langBtn.textContent = isArabic ? "EN" : "AR";
-
-          document.getElementById("home-link").textContent = isArabic ? translations["ar"]["home"] : translations["en"]["home"];
-          document.getElementById("pricing-link").textContent = isArabic ? translations["ar"]["pricing"] : translations["en"]["pricing"];
-          document.getElementById("about-link").textContent = isArabic ? translations["ar"]["about"] : translations["en"]["about"];
-          document.getElementById("login-btn").textContent = isArabic ? translations["ar"]["login"] : translations["en"]["login"];
-          document.getElementById("signup-btn").textContent = isArabic ? translations["ar"]["signup"] : translations["en"]["signup"];
-          document.getElementById("caption-text").textContent = isArabic ? translations["ar"]["caption"] : translations["en"]["caption"];
-          document.getElementById("footer-text").textContent = isArabic ? translations["ar"]["footer"] : translations["en"]["footer"];
-        });
+        } else {
+          if (stream) stream.getTracks().forEach(track => track.stop());
+          video.style.display = "none";
+          heroImage.style.display = "block";
+          cameraButton.classList.remove("recording");
+        }
+        isRecording = !isRecording;
       });
-    </script>
-  </body>
+      
+      const langBtn = document.getElementById("lang-toggle");
+      const translations = {
+        en: {
+          home: "Home",
+          pricing: "Pricing",
+          about: "About Us",
+          login: "Login",
+          signup: "Signup",
+          logout: "Logout",
+          dashboard: "Dashboard",
+          caption: "What are you saying",
+          footer: "© 2025, EchoVision, Inc. All Rights Reserved."
+        },
+        ar: {
+          home: "الرئيسية",
+          pricing: "الأسعار",
+          about: "معلومات عنا",
+          login: "تسجيل الدخول",
+          signup: "إنشاء حساب",
+          logout: "تسجيل الخروج",
+          dashboard: "لوحة التحكم",
+          caption: "ماذا تقول",
+          footer: "© 2025، شركة EchoVision، جميع الحقوق محفوظة."
+        }
+      };
+      
+      let isArabic = false;
+      langBtn.addEventListener("click", () => {
+        isArabic = !isArabic;
+        document.body.setAttribute("dir", isArabic ? "rtl" : "ltr");
+        document.documentElement.setAttribute("lang", isArabic ? "ar" : "en");
+        langBtn.textContent = isArabic ? "EN" : "AR";
+        
+        document.getElementById("home-link").textContent = translations[isArabic ? "ar" : "en"].home;
+        document.getElementById("pricing-link").textContent = translations[isArabic ? "ar" : "en"].pricing;
+        document.getElementById("about-link").textContent = translations[isArabic ? "ar" : "en"].about;
+        
+        document.getElementById("logout-btn").textContent = translations[isArabic ? "ar" : "en"].logout;
+        document.getElementById("dashboard-btn").textContent = translations[isArabic ? "ar" : "en"].dashboard;
+        
+        document.getElementById("caption-text").textContent = translations[isArabic ? "ar" : "en"].caption;
+        document.getElementById("footer-text").textContent = translations[isArabic ? "ar" : "en"].footer;
+      });
+      
+      let isLoggedIn = true;
+      let isAdmin = true;
+      
+      document.getElementById("logout-btn").style.display = "inline-block";
+      if (isAdmin) {
+        document.getElementById("dashboard-btn").style.display = "inline-block";
+      }
+    });
+  </script>
+</body>
 </html>

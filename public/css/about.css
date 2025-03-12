@@ -17,7 +17,6 @@ html, body {
   min-height: 100vh;
 }
 
-
 .header {
   background-color: rgb(245, 248, 251);
   display: flex;
@@ -72,7 +71,6 @@ html, body {
   box-sizing: border-box;
 }
 
-
 .login-btn {
   background-color: rgb(86, 90, 221); 
   color: #ffffff;
@@ -91,7 +89,6 @@ html, body {
   transform: scale(1.05); 
 }
 
-
 .signup-btn {
   background-color: rgb(239, 240, 255); 
   color: #000;
@@ -105,11 +102,20 @@ html, body {
   transition: background-color 0.3s ease-in-out, transform 0.2s;
 }
 
+.logout-btn {
+  background-color: rgb(207, 0, 0);
+  color: #ffffff;
+  padding: 14px 17px;
+  border-radius: 9999px;
+  font-size: 15px;
+  letter-spacing: 0.08px;
+  text-decoration: none;
+}
+
 .signup-btn:hover {
   background-color: rgb(220, 230, 255); 
   transform: scale(1.05);
 }
-
 
 .lang-btn {
   background-color: rgb(142, 135, 243); 
@@ -129,11 +135,39 @@ html, body {
   transform: scale(1.05);
 }
 
+.dashboard-btn {
+  background-color: #ff9800;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease-in-out;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-btn i {
+  font-size: 18px;
+}
+
+.dashboard-btn:hover {
+  background-color: #e68900;
+  transform: scale(1.05);
+}
+
+.dashboard-btn:active {
+  transform: scale(0.95);
+}
 
 body[dir="rtl"] .lang-btn {
   direction: ltr;
 }
-
 
 .main-content {
   background-color: #fff;
@@ -166,7 +200,6 @@ body[dir="rtl"] .lang-btn {
   text-align: left;
 }
 
-
 .footer {
   background-color: #000;
   padding: 20px 40px;
@@ -175,26 +208,22 @@ body[dir="rtl"] .lang-btn {
   font-size: 12px;
   line-height: 1.5;
   width: 100%;
-  margin-top: auto; 
+  margin-top: auto;
 }
 
 @media (max-width: 991px) {
   .header {
     padding: 20px 40px;
   }
-
   .nav-container {
     margin-left: 40px;
   }
-
   .nav-links {
     gap: 40px;
   }
-
   .auth-buttons {
     gap: 40px;
   }
-
   .footer {
     padding: 15px 20px;
   }
@@ -204,15 +233,12 @@ body[dir="rtl"] .lang-btn {
   .header {
     padding: 20px;
   }
-
   .nav-links {
     display: none;
   }
-
   .auth-buttons {
     display: none;
   }
-
   .footer {
     padding: 10px 10px;
     font-size: 10px;

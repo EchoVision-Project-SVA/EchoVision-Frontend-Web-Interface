@@ -96,12 +96,6 @@ html[dir="rtl"] .nav-container {
   margin-left: 20px; 
 }
 
-
-html[dir="rtl"] .lang-btn {
-  margin-left: 0;
-  margin-right: 20px; 
-}
-
 .logout-btn {
   background-color: rgb(207, 0, 0);
   color: #ffffff;
@@ -116,6 +110,12 @@ html[dir="rtl"] .lang-btn {
 .lang-btn:hover {
   background-color: rgb(110, 103, 220);
 }
+html[dir="rtl"] .lang-btn {
+  margin-left: 0;
+  margin-right: 20px; 
+}
+
+
 
 .main-content {
   background-color: #fff;
