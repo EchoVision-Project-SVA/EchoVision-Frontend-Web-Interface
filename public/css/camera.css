@@ -20,6 +20,7 @@ html, body {
   min-height: 100vh;
 }
 
+/* Header styling remains unchanged */
 .header {
   background-color: rgb(245, 248, 251);
   display: flex;
@@ -203,83 +204,58 @@ html, body {
   display: block;
 }
 
+/* Center main content vertically and horizontally */
 .main-content {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.video-container {
-  position: relative;
-  display: flex;
   justify-content: center;
-  margin-top: 20px;
 }
 
-#video {
-  display: none;
-  width: 100%;
-  max-width: 700px;
-  border-radius: 15px;
-}
-
-.hero-image {
-  width: 100%;
-  max-width: 700px;
-  border-radius: 15px;
-}
-
-.caption-box {
-  background: rgba(0, 0, 0, 0.75);
-  color: white;
-  padding: 4px 10px;
-  border-radius: 4px;
-  font-size: 16px;
-  max-width: 80%;
-  margin: 15px auto;
+/* Audio container styling (placed at the top) */
+#audioContainer {
+  margin-bottom: 10px;
   text-align: center;
-  line-height: 1.4;
 }
 
+/* New style for the upload (action) button */
+.action-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 2px solid #c0392b;
+  background-color: #c0392b;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+  max-width: 250px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.action-button:hover {
+  background-color: #a93226;
+  transform: scale(1.02);
+}
+
+/* Adjusted microphone container (Upload button area) */
 .microphone-container {
   display: flex;
-  justify-content: center;
-  margin: 20px 0;
-}
-
-.microphone-button {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background-color: white;
-  border: 3px solid #c0392b;
-  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: background-color 0.3s, border-color 0.3s;
-  position: relative;
+  margin: 10px 0;
 }
 
-.microphone-button::after {
-  content: "";
-  width: 20px;
-  height: 20px;
-  background-color: #c0392b;
-  border-radius: 50%;
-  position: absolute;
-  transition: background-color 0.3s;
-}
-
-.microphone-button.recording {
-  background-color: #c0392b;
-  border-color: #fff;
-}
-
-.microphone-button.recording::after {
-  background-color: white;
+/* Adjusted AI text container (moved above the Upload button) */
+#textContainer {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 16px;
 }
 
 .footer {
@@ -327,22 +303,9 @@ html, body {
     padding: 10px 10px;
     font-size: 10px;
   }
-  .video-container, #video, .hero-image {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-  }
-  .microphone-button {
-    width: 50px;
-    height: 50px;
-  }
-  .microphone-button::after {
-    width: 15px;
-    height: 15px;
-  }
-  .caption-box {
+  .action-button {
+    padding: 10px 20px;
     font-size: 14px;
-    max-width: 80%;
   }
   .main-content {
     padding: 20px 10px;

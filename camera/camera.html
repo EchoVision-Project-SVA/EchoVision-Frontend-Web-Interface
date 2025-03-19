@@ -11,7 +11,10 @@
 <body>
   <div class="container">
     <header class="header">
-      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f323aebef58277caab7dbe39260b9674dd4a09ac63495998aff7e633a7743b82" alt="EchoVision Logo" loading="lazy" class="logo">
+      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f323aebef58277caab7dbe39260b9674dd4a09ac63495998aff7e633a7743b82" 
+           alt="EchoVision Logo" 
+           loading="lazy" 
+           class="logo">
       <nav class="nav-container">
         <ul class="nav-links">
           <li>
@@ -36,19 +39,24 @@
     </header>
     
     <div class="main-content">
-      <div class="video-container">
-        <video id="video" autoplay></video>
-        <img id="hero-image" src="https://cdn.builder.io/api/v1/image/assets/TEMP/4faeb17bb11e9f85e5e392d384ef20739b1e38062628978f3676acb6fdbfa6c0" alt="Hero Image" class="hero-image">
+      <!-- Audio container (moved above the upload area) -->
+      <div id="audioContainer" style="display: none;">
+        <audio id="audioElement" controls>
+          <source src="" type="audio/mpeg">
+          Your browser does not support audio.
+        </audio>
       </div>
       
-      <section class="content-section">
-        <div id="caption-box" class="caption-box">
-          <p id="caption-text">What are you saying</p>
-        </div>
-      </section>
+      <!-- AI text container moved above the upload button -->
+      <div id="textContainer" style="display: none;">
+        <p id="aiOutput">AI output will appear here.</p>
+      </div>
       
       <div class="microphone-container">
-        <button id="camera-button" class="microphone-button"></button>
+        <!-- Upload button always labeled "Upload". The text will be truncated if too long -->
+        <button id="actionButton" class="action-button">Upload</button>
+        <!-- Hidden file input for file selection -->
+        <input type="file" id="fileInput" style="display: none;">
       </div>
     </div>
     
@@ -59,58 +67,60 @@
   
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      document.getElementById("menu-toggle")?.addEventListener("click", () => {
-        document.getElementById("mobile-menu")?.classList.toggle("open");
+      const actionButton = document.getElementById("actionButton");
+      const fileInput = document.getElementById("fileInput");
+      const textContainer = document.getElementById("textContainer");
+      const audioContainer = document.getElementById("audioContainer");
+      const audioElement = document.getElementById("audioElement");
+
+      // Clicking the Upload button opens the file selection dialog.
+      actionButton.addEventListener("click", () => {
+        fileInput.click();
       });
       
-      const cameraButton = document.getElementById("camera-button");
-      const video = document.getElementById("video");
-      const heroImage = document.getElementById("hero-image");
-      let isRecording = false;
-      let stream = null;
-      
-      cameraButton.addEventListener("click", async () => {
-        if (!isRecording) {
-          try {
-            stream = await navigator.mediaDevices.getUserMedia({ video: true });
-            video.srcObject = stream;
-            video.style.display = "block";
-            heroImage.style.display = "none";
-            cameraButton.classList.add("recording");
-          } catch (error) {
-            console.error("Error accessing camera:", error);
+      // Handle file selection.
+      fileInput.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          let fileName = file.name;
+          const maxLength = 20; // maximum characters to show
+          if (fileName.length > maxLength) {
+            fileName = fileName.substring(0, maxLength) + "...";
           }
-        } else {
-          if (stream) stream.getTracks().forEach(track => track.stop());
-          video.style.display = "none";
-          heroImage.style.display = "block";
-          cameraButton.classList.remove("recording");
+          // Update the button label to the truncated file name.
+          actionButton.innerText = fileName;
+          // Always show the AI text container.
+          textContainer.style.display = "block";
+          // Hide the audio container by default.
+          audioContainer.style.display = "none";
+          
+          // If the file is audio or video, load its audio track.
+          if (file.type.startsWith("audio") || file.type.startsWith("video")) {
+            audioContainer.style.display = "block";
+            const fileURL = URL.createObjectURL(file);
+            audioElement.src = fileURL;
+            audioElement.load();
+          }
         }
-        isRecording = !isRecording;
       });
       
+      // Language toggle functionality.
       const langBtn = document.getElementById("lang-toggle");
       const translations = {
         en: {
           home: "Home",
           pricing: "Pricing",
           about: "About Us",
-          login: "Login",
-          signup: "Signup",
           logout: "Logout",
           dashboard: "Dashboard",
-          caption: "What are you saying",
           footer: "© 2025, EchoVision, Inc. All Rights Reserved."
         },
         ar: {
           home: "الرئيسية",
           pricing: "الأسعار",
           about: "معلومات عنا",
-          login: "تسجيل الدخول",
-          signup: "إنشاء حساب",
           logout: "تسجيل الخروج",
           dashboard: "لوحة التحكم",
-          caption: "ماذا تقول",
           footer: "© 2025، شركة EchoVision، جميع الحقوق محفوظة."
         }
       };
@@ -125,17 +135,14 @@
         document.getElementById("home-link").textContent = translations[isArabic ? "ar" : "en"].home;
         document.getElementById("pricing-link").textContent = translations[isArabic ? "ar" : "en"].pricing;
         document.getElementById("about-link").textContent = translations[isArabic ? "ar" : "en"].about;
-        
         document.getElementById("logout-btn").textContent = translations[isArabic ? "ar" : "en"].logout;
         document.getElementById("dashboard-btn").textContent = translations[isArabic ? "ar" : "en"].dashboard;
-        
-        document.getElementById("caption-text").textContent = translations[isArabic ? "ar" : "en"].caption;
         document.getElementById("footer-text").textContent = translations[isArabic ? "ar" : "en"].footer;
       });
       
+      // Example: Show dashboard link based on user status.
       let isLoggedIn = true;
       let isAdmin = true;
-      
       document.getElementById("logout-btn").style.display = "inline-block";
       if (isAdmin) {
         document.getElementById("dashboard-btn").style.display = "inline-block";
