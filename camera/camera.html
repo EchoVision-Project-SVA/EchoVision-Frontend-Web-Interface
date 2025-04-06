@@ -1,153 +1,206 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EchoVision - Camera</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Work+Sans:wght@700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="../public/css/camera.css">
-</head>
-<body>
-  <div class="container">
-    <header class="header">
-      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f323aebef58277caab7dbe39260b9674dd4a09ac63495998aff7e633a7743b82" 
-           alt="EchoVision Logo" 
-           loading="lazy" 
-           class="logo">
-      <nav class="nav-container">
-        <ul class="nav-links">
-          <li>
-            <a href="../index.html" class="nav-link" id="home-link" data-translate="home-link">Home</a>
-          </li>
-          <li>
-            <a href="../pricing/pricing.html" class="nav-link" id="pricing-link" data-translate="pricing-link">Pricing</a>
-          </li>
-          <li>
-            <a href="../about_us/about.html" class="nav-link" id="about-link" data-translate="about-link">About Us</a>
-          </li>
-        </ul>
-        <div class="auth-buttons">
-          <a href="../dashboard/index.html" class="dashboard-btn" id="dashboard-btn" style="display: none;">
-            <i class="ti ti-layout-dashboard"></i>
-            <span data-translate="dashboard-btn">Dashboard</span>
-          </a>
-          <a href="../auth/logout.html" class="logout-btn" id="logout-btn" data-translate="logout-btn">Logout</a>
-          <button id="lang-toggle" class="lang-btn" data-translate="lang-toggle">AR</button>
-        </div>
-      </nav>
-    </header>
-    
-    <div class="main-content">
-      <!-- Audio container (moved above the upload area) -->
-      <div id="audioContainer" style="display: none;">
-        <audio id="audioElement" controls>
-          <source src="" type="audio/mpeg">
-          Your browser does not support audio.
-        </audio>
-      </div>
-      
-      <!-- AI text container moved above the upload button -->
-      <div id="textContainer" style="display: none;">
-        <p id="aiOutput">AI output will appear here.</p>
-      </div>
-      
-      <div class="microphone-container">
-        <!-- Upload button always labeled "Upload". The text will be truncated if too long -->
-        <button id="actionButton" class="action-button">Upload</button>
-        <!-- Hidden file input for file selection -->
-        <input type="file" id="fileInput" style="display: none;">
-      </div>
-    </div>
-    
-    <footer class="footer">
-      <p id="footer-text">© 2025, EchoVision, Inc. All Rights Reserved.</p>
-    </footer>
-  </div>
-  
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const actionButton = document.getElementById("actionButton");
-      const fileInput = document.getElementById("fileInput");
-      const textContainer = document.getElementById("textContainer");
-      const audioContainer = document.getElementById("audioContainer");
-      const audioElement = document.getElementById("audioElement");
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EchoVision - Camera</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Work+Sans:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../public/css/camera.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/f323aebef58277caab7dbe39260b9674dd4a09ac63495998aff7e633a7743b82"
+          alt="EchoVision Logo"
+          loading="lazy"
+          class="logo"
+        />
+        <nav class="nav-container">
+          <ul class="nav-links">
+            <li>
+              <a
+                href="../index.html"
+                class="nav-link"
+                id="home-link"
+                data-translate="home-link"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="../pricing/pricing.html"
+                class="nav-link"
+                id="pricing-link"
+                data-translate="pricing-link"
+                >Pricing</a
+              >
+            </li>
+            <li>
+              <a
+                href="../about_us/about.html"
+                class="nav-link"
+                id="about-link"
+                data-translate="about-link"
+                >About Us</a
+              >
+            </li>
+          </ul>
+          <div class="auth-buttons">
+            <a
+              href="../../EchoVision-Frontend-Web-Dashboard/index.html"
+              class="dashboard-btn"
+              id="dashboard-btn"
+              style="display: none"
+            >
+              <i class="ti ti-layout-dashboard"></i>
+              <span data-translate="dashboard-btn">Dashboard</span>
+            </a>
+            <a
+              href="../auth/logout.html"
+              class="logout-btn"
+              id="logout-btn"
+              data-translate="logout-btn"
+              >Logout</a
+            >
+            <button
+              id="lang-toggle"
+              class="lang-btn"
+              data-translate="lang-toggle"
+            >
+              AR
+            </button>
+          </div>
+        </nav>
+      </header>
 
-      // Clicking the Upload button opens the file selection dialog.
-      actionButton.addEventListener("click", () => {
-        fileInput.click();
-      });
-      
-      // Handle file selection.
-      fileInput.addEventListener("change", (e) => {
-        const file = e.target.files[0];
-        if (file) {
-          let fileName = file.name;
-          const maxLength = 20; // maximum characters to show
-          if (fileName.length > maxLength) {
-            fileName = fileName.substring(0, maxLength) + "...";
+      <div class="main-content">
+        <!-- Audio container (moved above the upload area) -->
+        <div id="audioContainer" style="display: none">
+          <audio id="audioElement" controls>
+            <source src="" type="audio/mpeg" />
+            Your browser does not support audio.
+          </audio>
+        </div>
+
+        <!-- AI text container moved above the upload button -->
+        <div id="textContainer" style="display: none">
+          <p id="aiOutput">AI output will appear here.</p>
+        </div>
+
+        <div class="microphone-container">
+          <!-- Upload button always labeled "Upload". The text will be truncated if too long -->
+          <button id="actionButton" class="action-button">Upload</button>
+          <!-- Hidden file input for file selection -->
+          <input type="file" id="fileInput" style="display: none" />
+        </div>
+      </div>
+
+      <footer class="footer">
+        <p id="footer-text">© 2025, EchoVision, Inc. All Rights Reserved.</p>
+      </footer>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const actionButton = document.getElementById("actionButton");
+        const fileInput = document.getElementById("fileInput");
+        const textContainer = document.getElementById("textContainer");
+        const audioContainer = document.getElementById("audioContainer");
+        const audioElement = document.getElementById("audioElement");
+
+        // Clicking the Upload button opens the file selection dialog.
+        actionButton.addEventListener("click", () => {
+          fileInput.click();
+        });
+
+        // Handle file selection.
+        fileInput.addEventListener("change", (e) => {
+          const file = e.target.files[0];
+          if (file) {
+            let fileName = file.name;
+            const maxLength = 20; // maximum characters to show
+            if (fileName.length > maxLength) {
+              fileName = fileName.substring(0, maxLength) + "...";
+            }
+            // Update the button label to the truncated file name.
+            actionButton.innerText = fileName;
+            // Always show the AI text container.
+            textContainer.style.display = "block";
+            // Hide the audio container by default.
+            audioContainer.style.display = "none";
+
+            // If the file is audio or video, load its audio track.
+            if (
+              file.type.startsWith("audio") ||
+              file.type.startsWith("video")
+            ) {
+              audioContainer.style.display = "block";
+              const fileURL = URL.createObjectURL(file);
+              audioElement.src = fileURL;
+              audioElement.load();
+            }
           }
-          // Update the button label to the truncated file name.
-          actionButton.innerText = fileName;
-          // Always show the AI text container.
-          textContainer.style.display = "block";
-          // Hide the audio container by default.
-          audioContainer.style.display = "none";
-          
-          // If the file is audio or video, load its audio track.
-          if (file.type.startsWith("audio") || file.type.startsWith("video")) {
-            audioContainer.style.display = "block";
-            const fileURL = URL.createObjectURL(file);
-            audioElement.src = fileURL;
-            audioElement.load();
-          }
+        });
+
+        // Language toggle functionality.
+        const langBtn = document.getElementById("lang-toggle");
+        const translations = {
+          en: {
+            home: "Home",
+            pricing: "Pricing",
+            about: "About Us",
+            logout: "Logout",
+            dashboard: "Dashboard",
+            footer: "© 2025, EchoVision, Inc. All Rights Reserved.",
+          },
+          ar: {
+            home: "الرئيسية",
+            pricing: "الأسعار",
+            about: "معلومات عنا",
+            logout: "تسجيل الخروج",
+            dashboard: "لوحة التحكم",
+            footer: "© 2025، شركة EchoVision، جميع الحقوق محفوظة.",
+          },
+        };
+
+        let isArabic = false;
+        langBtn.addEventListener("click", () => {
+          isArabic = !isArabic;
+          document.body.setAttribute("dir", isArabic ? "rtl" : "ltr");
+          document.documentElement.setAttribute("lang", isArabic ? "ar" : "en");
+          langBtn.textContent = isArabic ? "EN" : "AR";
+
+          document.getElementById("home-link").textContent =
+            translations[isArabic ? "ar" : "en"].home;
+          document.getElementById("pricing-link").textContent =
+            translations[isArabic ? "ar" : "en"].pricing;
+          document.getElementById("about-link").textContent =
+            translations[isArabic ? "ar" : "en"].about;
+          document.getElementById("logout-btn").textContent =
+            translations[isArabic ? "ar" : "en"].logout;
+          document.getElementById("dashboard-btn").textContent =
+            translations[isArabic ? "ar" : "en"].dashboard;
+          document.getElementById("footer-text").textContent =
+            translations[isArabic ? "ar" : "en"].footer;
+        });
+
+        // Example: Show dashboard link based on user status.
+        let isLoggedIn = true;
+        let isAdmin = true;
+        document.getElementById("logout-btn").style.display = "inline-block";
+        if (isAdmin) {
+          document.getElementById("dashboard-btn").style.display =
+            "inline-block";
         }
       });
-      
-      // Language toggle functionality.
-      const langBtn = document.getElementById("lang-toggle");
-      const translations = {
-        en: {
-          home: "Home",
-          pricing: "Pricing",
-          about: "About Us",
-          logout: "Logout",
-          dashboard: "Dashboard",
-          footer: "© 2025, EchoVision, Inc. All Rights Reserved."
-        },
-        ar: {
-          home: "الرئيسية",
-          pricing: "الأسعار",
-          about: "معلومات عنا",
-          logout: "تسجيل الخروج",
-          dashboard: "لوحة التحكم",
-          footer: "© 2025، شركة EchoVision، جميع الحقوق محفوظة."
-        }
-      };
-      
-      let isArabic = false;
-      langBtn.addEventListener("click", () => {
-        isArabic = !isArabic;
-        document.body.setAttribute("dir", isArabic ? "rtl" : "ltr");
-        document.documentElement.setAttribute("lang", isArabic ? "ar" : "en");
-        langBtn.textContent = isArabic ? "EN" : "AR";
-        
-        document.getElementById("home-link").textContent = translations[isArabic ? "ar" : "en"].home;
-        document.getElementById("pricing-link").textContent = translations[isArabic ? "ar" : "en"].pricing;
-        document.getElementById("about-link").textContent = translations[isArabic ? "ar" : "en"].about;
-        document.getElementById("logout-btn").textContent = translations[isArabic ? "ar" : "en"].logout;
-        document.getElementById("dashboard-btn").textContent = translations[isArabic ? "ar" : "en"].dashboard;
-        document.getElementById("footer-text").textContent = translations[isArabic ? "ar" : "en"].footer;
-      });
-      
-      // Example: Show dashboard link based on user status.
-      let isLoggedIn = true;
-      let isAdmin = true;
-      document.getElementById("logout-btn").style.display = "inline-block";
-      if (isAdmin) {
-        document.getElementById("dashboard-btn").style.display = "inline-block";
-      }
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>

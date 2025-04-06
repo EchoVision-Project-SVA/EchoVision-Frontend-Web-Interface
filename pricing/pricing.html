@@ -1,126 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EchoVision Pricing</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../public/css/pricing.css">
-</head>
-<body>
-
-  <header class="header">
-    <img
-      src="https://cdn.builder.io/api/v1/image/assets/TEMP/f323aebef58277caab7dbe39260b9674dd4a09ac63495998aff7e633a7743b82"
-      alt="EchoVision Logo"
-      loading="lazy"
-      class="logo"
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EchoVision Pricing</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
     />
-    <nav class="nav-container">
-      <ul class="nav-links">
-        <li>
-          <a href="../index.html" class="nav-link" id="home-link" data-translate="home-link">Home</a>
-        </li>
-        <li>
-          <a href="../pricing/pricing.html" class="nav-link" id="pricing-link" data-translate="pricing-link">Pricing</a>
-        </li>
-        <li>
-          <a href="../about_us/about.html" class="nav-link" id="about-link" data-translate="about-link">About Us</a>
-        </li>
-      </ul>
-      <div class="auth-buttons">
-
-        <a href="../dashboard/index.html" class="dashboard-btn" id="dashboard-btn" style="display: none;">
-          <i class="ti ti-layout-dashboard"></i>
-          <span data-translate="dashboard-btn">Dashboard</span>
-        </a>
-        <a href="../auth/logout.html" class="logout-btn" id="logout-btn" data-translate="logout-btn">Logout</a>
-        <button id="lang-toggle" class="lang-btn" data-translate="lang-toggle">AR</button>
-      </div>
-    </nav>
-  </header>
-
-  <main class="main-content">
-    <section class="hero-section">
-      <h1 id="hero-title" class="hero-title">Flexible Pricing for Every Need.</h1>
-      <p id="hero-subtitle" class="hero-subtitle">
-        Choose between monthly or yearly plans—tailored for your growth.
-      </p>
-    </section>
-
-    <section class="pricing-container">
-      <article class="pricing-card">
-        <div class="plan-details">
-          <h2 id="plan-monthly" class="plan-name">Monthly</h2>
-          <div class="price-container">
-            <p id="price-monthly" class="price">$39</p>
-            <span id="discount-monthly" class="discount">-15%</span>
-          </div>
+    <link rel="stylesheet" href="../public/css/pricing.css" />
+    <style>
+      /* Styling for the dark (left) pricing card */
+      .pricing-card-dark,
+      .pricing-card-dark h2,
+      .pricing-card-dark p,
+      .pricing-card-dark span,
+      .pricing-card-dark button {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <img
+        src="https://cdn.builder.io/api/v1/image/assets/TEMP/f323aebef58277caab7dbe39260b9674dd4a09ac63495998aff7e633a7743b82"
+        alt="EchoVision Logo"
+        loading="lazy"
+        class="logo"
+      />
+      <nav class="nav-container">
+        <ul class="nav-links">
+          <li>
+            <a
+              href="../index.html"
+              class="nav-link"
+              id="home-link"
+              data-translate="home-link"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="../pricing/pricing.html"
+              class="nav-link"
+              id="pricing-link"
+              data-translate="pricing-link"
+              >Pricing</a
+            >
+          </li>
+          <li>
+            <a
+              href="../about_us/about.html"
+              class="nav-link"
+              id="about-link"
+              data-translate="about-link"
+              >About Us</a
+            >
+          </li>
+        </ul>
+        <div class="auth-buttons">
+          <a
+            href="../../EchoVision-Frontend-Web-Dashboard/index.html"
+            class="dashboard-btn"
+            id="dashboard-btn"
+            style="display: none"
+          >
+            <i class="ti ti-layout-dashboard"></i>
+            <span data-translate="dashboard-btn">Dashboard</span>
+          </a>
+          <a
+            href="../auth/logout.html"
+            class="logout-btn"
+            id="logout-btn"
+            data-translate="logout-btn"
+            >Logout</a
+          >
+          <button
+            id="lang-toggle"
+            class="lang-btn"
+            data-translate="lang-toggle"
+          >
+            AR
+          </button>
         </div>
-        <button id="btn-monthly" class="get-started-btn" onclick="window.location.href='../checkout/checkout.html'">Get Started</button>
-      </article>
+      </nav>
+    </header>
 
-      <article class="pricing-card-dark">
-        <div class="plan-details">
-          <h2 id="plan-yearly" class="plan-name-2">Yearly</h2>
-          <div class="price-container">
-            <p id="price-yearly" class="price-2">$300</p>
-            <span id="discount-yearly" class="discount-2">-15%</span>
-          </div>
-        </div>
-        <button id="btn-yearly" class="get-started-btn" onclick="window.location.href='../checkout/checkout.html'">Get Started</button>
-      </article>
-    </section>
-  </main>
+    <main class="main-content">
+      <section class="hero-section">
+        <h1 id="hero-title" class="hero-title">
+          Flexible Pricing for Every Need.
+        </h1>
+        <p id="hero-subtitle" class="hero-subtitle">
+          Choose between monthly or yearly plans—tailored for your growth.
+        </p>
+      </section>
 
-  <footer class="footer">
-    <p id="footer-text">© 2025, EchoVision, Inc. All Rights Reserved.</p>
-  </footer>
+      <section class="pricing-container">
+        <p>Loading pricing plans...</p>
+      </section>
+    </main>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const langBtn = document.getElementById("lang-toggle");
+    <footer class="footer">
+      <p id="footer-text">© 2025, EchoVision, Inc. All Rights Reserved.</p>
+    </footer>
 
-      const translations = {
-          "Home": "الرئيسية",
-          "Pricing": "الأسعار",
+    <script>
+      document.addEventListener("DOMContentLoaded", async function () {
+        const langBtn = document.getElementById("lang-toggle");
+
+        const translations = {
+          Home: "الرئيسية",
+          Pricing: "الأسعار",
           "About Us": "معلومات عنا",
-          "Logout": "تسجيل الخروج",
+          Logout: "تسجيل الخروج",
           "Flexible Pricing for Every Need.": "أسعار مرنة تناسب الجميع.",
-          "Choose between monthly or yearly plans—tailored for your growth.": "اختر بين الاشتراك الشهري أو السنوي وفقًا لاحتياجاتك.",
-          "Monthly": "شهريًا",
-          "Yearly": "سنويًا",
-          "$39": "٣٩ دولار",
-          "$300": "٣٠٠ دولار",
+          "Choose between monthly or yearly plans—tailored for your growth.":
+            "اختر بين الاشتراك الشهري أو السنوي وفقًا لاحتياجاتك.",
+          Monthly: "شهريًا",
+          Yearly: "سنويًا",
+          $39: "٣٩ دولار",
+          $300: "٣٠٠ دولار",
           "-15%": "-١٥٪",
           "Get Started": "ابدأ الآن",
-          "© 2025, EchoVision, Inc. All Rights Reserved.": "© 2025، شركة EchoVision. جميع الحقوق محفوظة.",
-          "Dashboard": "لوحة التحكم"
-      };
+          "© 2025, EchoVision, Inc. All Rights Reserved.":
+            "© 2025، شركة EchoVision. جميع الحقوق محفوظة.",
+          Dashboard: "لوحة التحكم",
+        };
 
-      let isArabic = false;
+        let isArabic = false;
 
-      langBtn.addEventListener("click", function () {
+        langBtn.addEventListener("click", function () {
           isArabic = !isArabic;
           document.body.dir = isArabic ? "rtl" : "ltr";
           document.documentElement.lang = isArabic ? "ar" : "en";
           langBtn.textContent = isArabic ? "EN" : "AR";
-          document.querySelectorAll(".nav-link, .logout-btn, .hero-title, .hero-subtitle, .plan-name, .plan-name-2, .price, .price-2, .discount, .discount-2, .get-started-btn, .footer p")
-              .forEach(element => {
-                  const originalText = element.textContent.trim();
-                  element.textContent = isArabic ? translations[originalText] || originalText : Object.keys(translations).find(key => translations[key] === originalText) || originalText;
-              });
-      });
+          document
+            .querySelectorAll(
+              ".nav-link, .logout-btn, .hero-title, .hero-subtitle, .plan-name, .plan-name-2, .price, .price-2, .discount, .discount-2, .get-started-btn, .footer p"
+            )
+            .forEach((element) => {
+              const originalText = element.textContent.trim();
+              element.textContent = isArabic
+                ? translations[originalText] || originalText
+                : Object.keys(translations).find(
+                    (key) => translations[key] === originalText
+                  ) || originalText;
+            });
+        });
 
-      let isAdmin = true; 
-      if (isAdmin) {
-          document.getElementById("dashboard-btn").style.display = "inline-block";
-      } else {
+        // Example logic for admin display of the dashboard button
+        let isAdmin = true;
+        if (isAdmin) {
+          document.getElementById("dashboard-btn").style.display =
+            "inline-block";
+        } else {
           document.getElementById("dashboard-btn").style.display = "none";
-      }
-    });
-  </script>
+        }
 
-</body>
+        // Fetch pricing from the API
+        const pricingContainer = document.querySelector(".pricing-container");
+
+        try {
+          // Retrieve the token from storage (adjust as necessary)
+          const token = localStorage.getItem("auth_token");
+
+          const response = await fetch("http://localhost:3000/pricing", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          });
+
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+
+          const data = await response.json();
+
+          // Clear any existing content
+          pricingContainer.innerHTML = "";
+
+          // Loop through the pricing plans and create cards
+          data.pricing.forEach((plan) => {
+            // Determine the card style based on plan_name
+            const cardClass =
+              plan.plan_name.toLowerCase() === "yearly"
+                ? "pricing-card"
+                : "pricing-card-dark";
+
+            const card = document.createElement("article");
+            card.className = cardClass;
+
+            card.innerHTML = `
+              <div class="plan-details">
+                <h2 class="plan-name">${
+                  plan.plan_name.charAt(0).toUpperCase() +
+                  plan.plan_name.slice(1)
+                }</h2>
+                <div class="price-container">
+                  <p class="price">$${plan.price}</p>
+                </div>
+              </div>
+              <button class="get-started-btn">Get Started</button>
+            `;
+
+            // Append the card to the container
+            pricingContainer.appendChild(card);
+
+            // Attach event listener to the "Get Started" button to store plan details
+            card
+              .querySelector(".get-started-btn")
+              .addEventListener("click", function () {
+                // Store the selected plan id and price in local storage
+                localStorage.setItem("selectedPlanId", plan.id);
+                localStorage.setItem("selectedPlanPrice", plan.price);
+                // Navigate to checkout page
+                window.location.href = "../checkout/checkout.html";
+              });
+          });
+        } catch (error) {
+          console.error("Error fetching pricing data:", error);
+          pricingContainer.innerHTML =
+            "<p>Error loading pricing plans. Please try again later.</p>";
+        }
+      });
+    </script>
+  </body>
 </html>
