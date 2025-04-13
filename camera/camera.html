@@ -68,7 +68,16 @@
               class="logout-btn"
               id="logout-btn"
               data-translate="logout-btn"
+              style="display: none"
               >Logout</a
+            >
+            <a
+              href="../auth/login.html"
+              class="login-btn"
+              id="login-btn"
+              data-translate="login-btn"
+              style="display: none"
+              >Login</a
             >
             <button
               id="lang-toggle"
@@ -97,14 +106,27 @@
 
         <div class="microphone-container">
           <!-- Upload button always labeled "Upload". The text will be truncated if too long -->
-          <button id="actionButton" class="action-button">Upload</button>
+          <button
+            id="actionButton"
+            class="action-button"
+            data-translate="upload-btn"
+          >
+            Upload
+          </button>
           <!-- Hidden file input for file selection -->
-          <input type="file" id="fileInput" style="display: none" />
+          <input
+            type="file"
+            id="fileInput"
+            style="display: none"
+            accept="video/*,audio/*"
+          />
         </div>
       </div>
 
       <footer class="footer">
-        <p id="footer-text">© 2025, EchoVision, Inc. All Rights Reserved.</p>
+        <p id="footer-text" data-translate="footer-text">
+          © 2025, EchoVision, Inc. All Rights Reserved.
+        </p>
       </footer>
     </div>
 
@@ -113,93 +135,156 @@
         const actionButton = document.getElementById("actionButton");
         const fileInput = document.getElementById("fileInput");
         const textContainer = document.getElementById("textContainer");
+        const aiOutput = document.getElementById("aiOutput");
         const audioContainer = document.getElementById("audioContainer");
         const audioElement = document.getElementById("audioElement");
+        const logoutBtn = document.getElementById("logout-btn");
+        const loginBtn = document.getElementById("login-btn");
+        const dashboardBtn = document.getElementById("dashboard-btn");
 
-        // Clicking the Upload button opens the file selection dialog.
-        actionButton.addEventListener("click", () => {
-          fileInput.click();
-        });
-
-        // Handle file selection.
-        fileInput.addEventListener("change", (e) => {
-          const file = e.target.files[0];
-          if (file) {
-            let fileName = file.name;
-            const maxLength = 20; // maximum characters to show
-            if (fileName.length > maxLength) {
-              fileName = fileName.substring(0, maxLength) + "...";
-            }
-            // Update the button label to the truncated file name.
-            actionButton.innerText = fileName;
-            // Always show the AI text container.
-            textContainer.style.display = "block";
-            // Hide the audio container by default.
-            audioContainer.style.display = "none";
-
-            // If the file is audio or video, load its audio track.
-            if (
-              file.type.startsWith("audio") ||
-              file.type.startsWith("video")
-            ) {
-              audioContainer.style.display = "block";
-              const fileURL = URL.createObjectURL(file);
-              audioElement.src = fileURL;
-              audioElement.load();
-            }
-          }
-        });
-
-        // Language toggle functionality.
+        // Language toggle functionality
         const langBtn = document.getElementById("lang-toggle");
         const translations = {
           en: {
-            home: "Home",
-            pricing: "Pricing",
-            about: "About Us",
-            logout: "Logout",
-            dashboard: "Dashboard",
-            footer: "© 2025, EchoVision, Inc. All Rights Reserved.",
+            "home-link": "Home",
+            "pricing-link": "Pricing",
+            "about-link": "About Us",
+            "logout-btn": "Logout",
+            "dashboard-btn": "Dashboard",
+            "footer-text": "© 2025, EchoVision, Inc. All Rights Reserved.",
+            "lang-toggle": "AR",
+            "upload-btn": "Upload",
+            "Authentication required. Please log in.":
+              "Authentication required. Please log in.",
+            "Failed to process file.": "Failed to process file.",
           },
           ar: {
-            home: "الرئيسية",
-            pricing: "الأسعار",
-            about: "معلومات عنا",
-            logout: "تسجيل الخروج",
-            dashboard: "لوحة التحكم",
-            footer: "© 2025، شركة EchoVision، جميع الحقوق محفوظة.",
+            "home-link": "الرئيسية",
+            "pricing-link": "الأسعار",
+            "about-link": "معلومات عنا",
+            "logout-btn": "تسجيل الخروج",
+            "dashboard-btn": "لوحة التحكم",
+            "footer-text": "© 2025، شركة EchoVision، جميع الحقوق محفوظة.",
+            "lang-toggle": "EN",
+            "upload-btn": "رفع",
+            "Authentication required. Please log in.":
+              "التوثيق مطلوب. يرجى تسجيل الدخول.",
+            "Failed to process file.": "فشل في معالجة الملف.",
           },
         };
 
-        let isArabic = false;
-        langBtn.addEventListener("click", () => {
-          isArabic = !isArabic;
+        let isArabic = localStorage.getItem("selectedLanguage") === "ar";
+        function updateLanguage() {
+          isArabic = document.documentElement.lang === "en" ? false : true;
           document.body.setAttribute("dir", isArabic ? "rtl" : "ltr");
           document.documentElement.setAttribute("lang", isArabic ? "ar" : "en");
-          langBtn.textContent = isArabic ? "EN" : "AR";
+          langBtn.textContent =
+            translations[isArabic ? "ar" : "en"]["lang-toggle"];
 
-          document.getElementById("home-link").textContent =
-            translations[isArabic ? "ar" : "en"].home;
-          document.getElementById("pricing-link").textContent =
-            translations[isArabic ? "ar" : "en"].pricing;
-          document.getElementById("about-link").textContent =
-            translations[isArabic ? "ar" : "en"].about;
-          document.getElementById("logout-btn").textContent =
-            translations[isArabic ? "ar" : "en"].logout;
-          document.getElementById("dashboard-btn").textContent =
-            translations[isArabic ? "ar" : "en"].dashboard;
-          document.getElementById("footer-text").textContent =
-            translations[isArabic ? "ar" : "en"].footer;
+          document.querySelectorAll("[data-translate]").forEach((el) => {
+            const key = el.getAttribute("data-translate");
+            el.textContent = translations[isArabic ? "ar" : "en"][key];
+          });
+
+          localStorage.setItem("selectedLanguage", isArabic ? "ar" : "en");
+        }
+
+        langBtn.addEventListener("click", () => {
+          document.documentElement.lang = isArabic ? "en" : "ar";
+          updateLanguage();
         });
 
-        // Example: Show dashboard link based on user status.
-        let isLoggedIn = true;
-        let isAdmin = true;
-        document.getElementById("logout-btn").style.display = "inline-block";
-        if (isAdmin) {
-          document.getElementById("dashboard-btn").style.display =
-            "inline-block";
+        // Initialize language
+        updateLanguage();
+
+        // Check user status
+        const token = localStorage.getItem("auth_token");
+        const isAdmin = localStorage.getItem("isAdmin") === "true";
+        if (token) {
+          logoutBtn.style.display = "inline-block";
+          loginBtn.style.display = "none";
+          if (isAdmin) {
+            dashboardBtn.style.display = "inline-block";
+          }
+        } else {
+          logoutBtn.style.display = "none";
+          loginBtn.style.display = "inline-block";
+          dashboardBtn.style.display = "none";
         }
+
+        // Clicking the Upload button opens the file selection dialog
+        actionButton.addEventListener("click", () => {
+          // Check if user is logged in
+          if (!token) {
+            alert(
+              isArabic
+                ? translations.ar["Authentication required. Please log in."]
+                : translations.en["Authentication required. Please log in."]
+            );
+            window.location.href = "../auth/login.html";
+            return;
+          }
+          fileInput.click();
+        });
+
+        // Handle file selection and send to endpoint
+        fileInput.addEventListener("change", async (e) => {
+          const file = e.target.files[0];
+          if (!file) return;
+
+          // Update button label with truncated file name
+          let fileName = file.name;
+          const maxLength = 20; // Maximum characters to show
+          if (fileName.length > maxLength) {
+            fileName = fileName.substring(0, maxLength) + "...";
+          }
+          actionButton.innerText = fileName;
+
+          // Show the text container (will be updated with prediction text)
+          textContainer.style.display = "block";
+          aiOutput.textContent = "Processing..."; // Temporary message while waiting for response
+          audioContainer.style.display = "none"; // Hide audio until we get the response
+
+          // Prepare FormData to send the file
+          const formData = new FormData();
+          formData.append("file", file);
+
+          try {
+            const response = await fetch("http://127.0.0.1:8000/api/predict", {
+              method: "POST",
+              body: formData,
+            });
+
+            if (!response.ok) {
+              throw new Error(`Failed to process file: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log("Response from API:", data);
+
+            // Update the UI with the response data
+            aiOutput.textContent =
+              data.prediction_text || "No prediction available";
+            if (data.audio_file) {
+              audioContainer.style.display = "block";
+              audioElement.src = data.audio_file;
+              audioElement.load();
+              audioElement.play().catch((err) => {
+                console.error("Error playing audio:", err);
+              });
+            } else {
+              audioContainer.style.display = "none";
+            }
+          } catch (error) {
+            console.error("Error processing file:", error);
+            alert(
+              isArabic
+                ? translations.ar["Failed to process file."]
+                : translations.en["Failed to process file."]
+            );
+            window.location.href = "../index.html";
+          }
+        });
       });
     </script>
   </body>

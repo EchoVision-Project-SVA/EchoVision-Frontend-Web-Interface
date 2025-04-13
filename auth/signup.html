@@ -1,141 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up | EchoVision</title>
-    <link rel="stylesheet" href="../public/css/signup.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../public/css/signup.css" />
+    <style>
+      /* Message container styles */
+      #message-container {
+        margin-top: 20px;
+        padding: 10px;
+        text-align: center;
+        font-size: 1rem;
+        color: #ffffff;
+        display: none;
+      }
+      #message-container.success {
+        background-color: #4caf50;
+      }
+      #message-container.error {
+        background-color: #f44336;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="lang-toggle" class="lang-btn">AR</button>
 
-<button id="lang-toggle" class="lang-btn">AR</button> 
-
-<div class="container">
-    <div class="logo-container">
-        <img 
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/bedb8fd6e227ef34cf9e53bb0d48d245af596939de8b59f118b7d9e572b31f31?placeholderIfAbsent=true" 
-            alt="Logo" 
-            loading="lazy" 
-            class="logo" 
+    <div class="container">
+      <div class="logo-container">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/bedb8fd6e227ef34cf9e53bb0d48d245af596939de8b59f118b7d9e572b31f31?placeholderIfAbsent=true"
+          alt="Logo"
+          loading="lazy"
+          class="logo"
         />
-    </div>
-    <h1 class="title">Sign up to EchoVision</h1>
+      </div>
+      <h1 class="title">Sign up to EchoVision</h1>
 
-    <form class="signup-form">
+      <form class="signup-form">
         <div class="name-group">
-            <input type="text" id="first-name" placeholder="First name" class="input half-width" aria-label="First name" />
-            <input type="text" id="last-name" placeholder="Last name" class="input half-width" aria-label="Last name" />
+          <input
+            type="text"
+            id="first-name"
+            placeholder="First name"
+            class="input half-width"
+            aria-label="First name"
+          />
+          <input
+            type="text"
+            id="last-name"
+            placeholder="Last name"
+            class="input half-width"
+            aria-label="Last name"
+          />
         </div>
-        <input type="email" id="email" placeholder="Email Address" class="input full-width" aria-label="Email Address" />
-        <input type="password" id="password" placeholder="Password" class="input full-width" aria-label="Password" />
-        <input type="password" id="confirm-password" placeholder="Confirm Password" class="input full-width" aria-label="Confirm Password" />
+        <input
+          type="email"
+          id="email"
+          placeholder="Email Address"
+          class="input full-width"
+          aria-label="Email Address"
+        />
+        <input
+          type="password"
+          id="password"
+          placeholder="Password"
+          class="input full-width"
+          aria-label="Password"
+        />
+        <input
+          type="password"
+          id="confirm-password"
+          placeholder="Confirm Password"
+          class="input full-width"
+          aria-label="Confirm Password"
+        />
         <button type="submit" class="submit-button">SIGN UP</button>
-    </form>
+      </form>
 
-    <footer class="form-footer">
+      <!-- Message container for non-alert messages -->
+      <div id="message-container"></div>
+
+      <footer class="form-footer">
         <p class="footer-text">Have an account?</p>
         <div class="footer-divider"></div>
         <a href="../auth/login.html" class="login-link">Login</a>
-    </footer>
-</div>
+      </footer>
+    </div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const langBtn = document.getElementById("lang-toggle");
-  
-      const translations = {
-        "Sign up to EchoVision": "EchoVision إنشاء حساب في",
-        "First name": "الاسم الأول",
-        "Last name": "الاسم الأخير",
-        "Email Address": "البريد الإلكتروني",
-        "Password": "كلمة المرور",
-        "Confirm Password": "تأكيد كلمة المرور",
-        "SIGN UP": "تسجيل",
-        "Have an account?": "هل لديك حساب؟",
-        "Login": "تسجيل الدخول"
-      };
-  
-      let isArabic = false;
-  
-      langBtn.addEventListener("click", function () {
-        isArabic = !isArabic;
-        document.body.dir = isArabic ? "rtl" : "ltr";
-        document.documentElement.lang = isArabic ? "ar" : "en";
-        langBtn.textContent = isArabic ? "EN" : "AR";
-  
-        document.querySelectorAll(".title, .submit-button, .footer-text, .login-link").forEach(element => {
-          const originalText = element.textContent.trim();
-          element.textContent = isArabic ? translations[originalText] || originalText : Object.keys(translations).find(key => translations[key] === originalText) || originalText;
-        });
-  
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const langBtn = document.getElementById("lang-toggle");
 
-        document.getElementById("first-name").setAttribute("placeholder", isArabic ? translations["First name"] : "First name");
-        document.getElementById("last-name").setAttribute("placeholder", isArabic ? translations["Last name"] : "Last name");
-        document.getElementById("email").setAttribute("placeholder", isArabic ? translations["Email Address"] : "Email Address");
-        document.getElementById("password").setAttribute("placeholder", isArabic ? translations["Password"] : "Password");
-        document.getElementById("confirm-password").setAttribute("placeholder", isArabic ? translations["Confirm Password"] : "Confirm Password");
-      });
-    });
-  </script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const signupForm = document.querySelector(".signup-form");
-    
-    signupForm.addEventListener("submit", async function (event) {
-        event.preventDefault(); 
-
-        const firstName = document.getElementById("first-name").value.trim();
-        const lastName = document.getElementById("last-name").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const password = document.getElementById("password").value.trim();
-        const confirmPassword = document.getElementById("confirm-password").value.trim();
-
-
-        if (!firstName || !lastName || !email || !password || !confirmPassword) {
-            alert("Please fill in all fields.");
-            return;
-        }
-        
-        if (password !== confirmPassword) {
-            alert("Passwords do not match.");
-            return;
-        }
-
-        const requestBody = {
-            'first_name': firstName,
-            'last_name': lastName,
-            email,
-            password
+        const translations = {
+          "Sign up to EchoVision": "EchoVision إنشاء حساب في",
+          "First name": "الاسم الأول",
+          "Last name": "الاسم الأخير",
+          "Email Address": "البريد الإلكتروني",
+          Password: "كلمة المرور",
+          "Confirm Password": "تأكيد كلمة المرور",
+          "SIGN UP": "تسجيل",
+          "Have an account?": "هل لديك حساب؟",
+          Login: "تسجيل الدخول",
         };
 
-        try {
+        let isArabic = false;
+
+        langBtn.addEventListener("click", function () {
+          isArabic = !isArabic;
+          document.body.dir = isArabic ? "rtl" : "ltr";
+          document.documentElement.lang = isArabic ? "ar" : "en";
+          langBtn.textContent = isArabic ? "EN" : "AR";
+
+          document
+            .querySelectorAll(
+              ".title, .submit-button, .footer-text, .login-link"
+            )
+            .forEach((element) => {
+              const originalText = element.textContent.trim();
+              element.textContent = isArabic
+                ? translations[originalText] || originalText
+                : Object.keys(translations).find(
+                    (key) => translations[key] === originalText
+                  ) || originalText;
+            });
+
+          document
+            .getElementById("first-name")
+            .setAttribute(
+              "placeholder",
+              isArabic ? translations["First name"] : "First name"
+            );
+          document
+            .getElementById("last-name")
+            .setAttribute(
+              "placeholder",
+              isArabic ? translations["Last name"] : "Last name"
+            );
+          document
+            .getElementById("email")
+            .setAttribute(
+              "placeholder",
+              isArabic ? translations["Email Address"] : "Email Address"
+            );
+          document
+            .getElementById("password")
+            .setAttribute(
+              "placeholder",
+              isArabic ? translations["Password"] : "Password"
+            );
+          document
+            .getElementById("confirm-password")
+            .setAttribute(
+              "placeholder",
+              isArabic ? translations["Confirm Password"] : "Confirm Password"
+            );
+        });
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const signupForm = document.querySelector(".signup-form");
+        const messageContainer = document.getElementById("message-container");
+
+        // Helper function to display messages without using alert
+        function showMessage(message, type = "error") {
+          messageContainer.textContent = message;
+          messageContainer.className = "";
+          messageContainer.classList.add(type);
+          messageContainer.style.display = "block";
+        }
+
+        signupForm.addEventListener("submit", async function (event) {
+          event.preventDefault();
+
+          const firstName = document.getElementById("first-name").value.trim();
+          const lastName = document.getElementById("last-name").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const password = document.getElementById("password").value.trim();
+          const confirmPassword = document
+            .getElementById("confirm-password")
+            .value.trim();
+
+          // Validate form input
+          if (
+            !firstName ||
+            !lastName ||
+            !email ||
+            !password ||
+            !confirmPassword
+          ) {
+            showMessage("Please fill in all fields.");
+            return;
+          }
+
+          if (password !== confirmPassword) {
+            showMessage("Passwords do not match.");
+            return;
+          }
+
+          const requestBody = {
+            first_name: firstName,
+            last_name: lastName,
+            email,
+            password,
+          };
+
+          try {
             const response = await fetch("http://localhost:3000/auth/signup", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(requestBody)
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(requestBody),
             });
 
             if (!response.ok) {
-                throw new Error("Login failed. Please check your credentials.");
+              throw new Error("Signup failed. Please try again.");
             }
 
             const data = await response.json();
-            alert("Signup successful! Redirecting...");
-            
- 
-            localStorage.setItem("auth_token", data.token);
+            showMessage(
+              "Signup successful! Redirecting to login...",
+              "success"
+            );
 
-
-            window.location.href = "../index.html"; 
-        } catch (error) {
-            alert(error.message);
-        }
-    });
-});
-
-</script>
-
-</body>
+            // Redirect to login page after a short delay
+            setTimeout(() => {
+              window.location.href = "../auth/login.html";
+            }, 1500); // 1.5 seconds delay for the user to read the message
+          } catch (error) {
+            showMessage(error.message);
+          }
+        });
+      });
+    </script>
+  </body>
 </html>

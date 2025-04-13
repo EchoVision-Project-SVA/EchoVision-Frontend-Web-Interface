@@ -1,54 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Form</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../public/css/checkout.css">
-</head>
-<body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-translate="page-title">Payment Form</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../public/css/checkout.css" />
+  </head>
+  <body>
+    <button id="lang-toggle" class="lang-btn" data-translate="lang-toggle">
+      AR
+    </button>
     <div class="container">
+      <div class="left-section">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/121db11d199c46de2b32ed978513e5aef03e7b3d824e3cb9bd8081cea8ba311d"
+          class="logo"
+          alt="Company Logo"
+        />
 
-        <div class="left-section">
-            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/121db11d199c46de2b32ed978513e5aef03e7b3d824e3cb9bd8081cea8ba311d" class="logo" alt="Company Logo">
-            
-            <h2 class="section-title">Billed To</h2>
-            <input type="text" class="input-field" value="Jane Smith" readonly>
-            <input type="text" class="input-field" placeholder="Phone Number">
-            <input type="text" class="input-field" placeholder="Country">
-            <input type="text" class="input-field" placeholder="City">
-            <input type="text" class="input-field" placeholder="Address">
-            <input type="text" class="input-field" placeholder="Postal Code">
+        <h2 class="section-title billed-to" data-translate="billed-to">
+          Billed To
+        </h2>
+        <input type="text" class="input-field name-field" readonly />
 
-            <h2 class="section-title">Payment Details</h2>
-            <div class="payment-methods">
-                <button class="paypal-btn">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal"> Pay with PayPal
-                </button>
-            </div>
-
-            <div class="action-buttons">
-                <button class="cancel-btn">Cancel</button>
-                <button class="subscribe-btn">Subscribe</button>
-            </div>
+        <h2
+          class="section-title payment-details"
+          data-translate="payment-details"
+        >
+          Payment Details
+        </h2>
+        <div class="payment-methods">
+          <button class="paypal-btn">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
+              alt="PayPal"
+            />
+            <span class="paypal-text" data-translate="pay-with-paypal"
+              >Pay with PayPal</span
+            >
+          </button>
         </div>
 
- 
-        <div class="right-section">
-            <div class="summary">
-                <div class="total-section">
-                    <span>Total</span>
-                    <span>$16 / Month</span>
-                </div>
-                <p class="security-text">🔒 Guaranteed to be safe & secure, ensuring that all transactions are protected with the highest level of security.</p>
-            </div>
-            <div class="image-box">
-                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/86127416f7d9c00fc68fcfbbe132a763dd7d431a4b65e345a0550bcf1da9adeb" alt="Illustration">
-            </div>
+        <div class="action-buttons">
+          <button class="cancel-btn" data-translate="cancel">Cancel</button>
         </div>
+      </div>
+
+      <div class="right-section">
+        <div class="summary">
+          <div class="total-section">
+            <span class="total-label" data-translate="total">Total</span>
+            <span class="total-amount"></span>
+            <!-- Price will be set dynamically -->
+          </div>
+          <p class="security-text" data-translate="security-text">
+            🔒 Guaranteed to be safe & secure, ensuring that all transactions
+            are protected with the highest level of security.
+          </p>
+        </div>
+        <div class="image-box">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/86127416f7d9c00fc68fcfbbe132a763dd7d431a4b65e345a0550bcf1da9adeb"
+            alt="Illustration"
+          />
+        </div>
+      </div>
     </div>
 
-</body>
+    <script>
+      const translations = {
+        en: {
+          "page-title": "Payment Form",
+          "lang-toggle": "AR",
+          "billed-to": "Billed To",
+          "payment-details": "Payment Details",
+          "pay-with-paypal": "Pay with PayPal",
+          total: "Total",
+          "security-text":
+            "🔒 Guaranteed to be safe & secure, ensuring that all transactions are protected with the highest level of security.",
+          cancel: "Cancel",
+          month: "Month",
+          "authentication-required": "Authentication required. Please log in.",
+        },
+        ar: {
+          "page-title": "نموذج الدفع",
+          "lang-toggle": "EN",
+          "billed-to": "فوتر إلى",
+          "payment-details": "تفاصيل الدفع",
+          "pay-with-paypal": "الدفع باستخدام PayPal",
+          total: "المجموع",
+          "security-text":
+            "🔒 مضمون أن يكون آمنًا ومؤمنًا، مما يضمن حماية جميع المعاملات بأعلى مستوى من الأمان.",
+          cancel: "إلغاء",
+          month: "شهر",
+          "authentication-required": "التوثيق مطلوب. يرجى تسجيل الدخول.",
+        },
+      };
+
+      function updateLanguage(lang) {
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+        document.getElementById("lang-toggle").textContent =
+          translations[lang]["lang-toggle"];
+
+        document.querySelectorAll("[data-translate]").forEach((el) => {
+          const key = el.getAttribute("data-translate");
+          if (translations[lang][key]) {
+            el.textContent = translations[lang][key];
+          }
+        });
+
+        // Update dynamic price text
+        const totalAmount = document.querySelector(".total-amount");
+        const storedPrice = localStorage.getItem("selectedPlanPrice") || "16";
+        const price = parseFloat(storedPrice);
+        totalAmount.textContent =
+          lang === "ar"
+            ? `$${price} / ${translations.ar["month"]}`
+            : `$${price} / ${translations.en["month"]}`;
+
+        localStorage.setItem("selectedLanguage", lang);
+      }
+
+      // Check the token's expiry
+      function checkTokenExpiry() {
+        const tokenExpiry = localStorage.getItem("tokenExpiry");
+        if (tokenExpiry && Date.now() > Number(tokenExpiry)) {
+          console.log("Token expired");
+          logoutUser();
+          return false;
+        }
+        return true;
+      }
+
+      // Logout function
+      function logoutUser() {
+        localStorage.removeItem("auth_token");
+        localStorage.removeItem("isAdmin");
+        localStorage.removeItem("is_subscribed");
+        localStorage.removeItem("tokenExpiry");
+        localStorage.removeItem("loggedInUser");
+        localStorage.removeItem("isRefreshed");
+        window.location.href = "../index.html";
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Check if user is logged in
+        const token = localStorage.getItem("auth_token");
+        if (!token) {
+          const savedLang = localStorage.getItem("selectedLanguage") || "en";
+          alert(
+            savedLang === "ar"
+              ? translations.ar["authentication-required"]
+              : translations.en["authentication-required"]
+          );
+          window.location.href = "../index.html";
+          return;
+        }
+
+        // If token exists, check if it is expired
+        if (!checkTokenExpiry()) return;
+
+        // Set dynamic name from localStorage
+        const nameField = document.querySelector(".name-field");
+        const storedName = localStorage.getItem("name") || "Jane Smith";
+        nameField.value = storedName;
+
+        // Initialize language
+        const savedLang = localStorage.getItem("selectedLanguage") || "en";
+        updateLanguage(savedLang);
+
+        // Language toggle
+        const langBtn = document.getElementById("lang-toggle");
+        langBtn.addEventListener("click", function () {
+          const newLang = document.documentElement.lang === "en" ? "ar" : "en";
+          updateLanguage(newLang);
+        });
+
+        // Cancel button navigation
+        const cancelBtn = document.querySelector(".cancel-btn");
+        cancelBtn.addEventListener("click", function () {
+          window.location.href = "../pricing/pricing.html";
+        });
+
+        // Pay with PayPal button functionality
+        const paypalBtn = document.querySelector(".paypal-btn");
+        paypalBtn.addEventListener("click", async function (event) {
+          event.preventDefault(); // Prevent default button behavior
+
+          // Get the amount from localStorage
+          const amount = localStorage.getItem("selectedPlanPrice") || "16";
+          const paymentData = {
+            amount: parseFloat(amount).toFixed(2), // Ensure 2 decimal places
+            currency: "USD",
+          };
+
+          try {
+            const response = await fetch("http://localhost:3000/payments/pay", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+              },
+              body: JSON.stringify(paymentData),
+            });
+
+            if (!response.ok) {
+              throw new Error(`Payment request failed: ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            if (data.success) {
+              // Redirect to the PayPal URL
+              window.location.href = data.url;
+            } else {
+              throw new Error("Payment initiation failed: Success is false");
+            }
+          } catch (error) {
+            console.error("Error initiating payment:", error);
+            alert(
+              savedLang === "ar"
+                ? "خطأ في بدء الدفع: " + error.message
+                : "Error initiating payment: " + error.message
+            );
+          }
+        });
+      });
+    </script>
+  </body>
 </html>

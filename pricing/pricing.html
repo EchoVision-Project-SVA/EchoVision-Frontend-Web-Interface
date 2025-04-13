@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EchoVision Pricing</title>
+    <title data-translate="page-title">EchoVision Pricing</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
@@ -17,6 +17,38 @@
       .pricing-card-dark span,
       .pricing-card-dark button {
         color: white;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      .dashboard-btn,
+      .nav-start-now-btn {
+        background-color: #ff9800;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: bold;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease-in-out;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+        margin-right: 10px;
+      }
+      .dashboard-btn:hover,
+      .nav-start-now-btn:hover {
+        background-color: #e68900;
+        transform: scale(1.05);
+      }
+      .dashboard-btn:active,
+      .nav-start-now-btn:active {
+        transform: scale(0.95);
       }
     </style>
   </head>
@@ -35,7 +67,7 @@
               href="../index.html"
               class="nav-link"
               id="home-link"
-              data-translate="home-link"
+              data-translate="nav-home"
               >Home</a
             >
           </li>
@@ -44,7 +76,7 @@
               href="../pricing/pricing.html"
               class="nav-link"
               id="pricing-link"
-              data-translate="pricing-link"
+              data-translate="nav-pricing"
               >Pricing</a
             >
           </li>
@@ -53,27 +85,53 @@
               href="../about_us/about.html"
               class="nav-link"
               id="about-link"
-              data-translate="about-link"
+              data-translate="nav-about"
               >About Us</a
+            >
+          </li>
+          <li>
+            <a
+              href="../download/download.html"
+              class="nav-link"
+              id="download-link"
+              data-translate="nav-download"
+              >Download</a
+            >
+          </li>
+          <!-- Start Now nav button (visible only when logged in and subscribed) -->
+          <li id="start-now-li" class="hidden">
+            <a
+              href="../camera/camera.html"
+              id="start-now-navbar-btn"
+              class="nav-start-now-btn"
+              data-translate="start-now"
+              >Start Now</a
             >
           </li>
         </ul>
         <div class="auth-buttons">
           <a
-            href="../../EchoVision-Frontend-Web-Dashboard/index.html"
-            class="dashboard-btn"
-            id="dashboard-btn"
+            href="../auth/login.html"
+            class="login-btn"
+            id="login-btn"
+            data-translate="login-btn"
             style="display: none"
+            >Login</a
           >
-            <i class="ti ti-layout-dashboard"></i>
-            <span data-translate="dashboard-btn">Dashboard</span>
-          </a>
           <a
             href="../auth/logout.html"
-            class="logout-btn"
+            class="logout-btn hidden"
             id="logout-btn"
             data-translate="logout-btn"
             >Logout</a
+          >
+          <a
+            href="../auth/signup.html"
+            class="signup-btn"
+            id="signup-btn"
+            data-translate="signup-btn"
+            style="display: none"
+            >Signup</a
           >
           <button
             id="lang-toggle"
@@ -82,92 +140,221 @@
           >
             AR
           </button>
+          <a
+            href="../../EchoVision-Frontend-Web-Dashboard/index.html"
+            class="dashboard-btn hidden"
+            id="dashboard-btn"
+            data-translate="dashboard-btn"
+            >Dashboard</a
+          >
         </div>
       </nav>
     </header>
 
     <main class="main-content">
       <section class="hero-section">
-        <h1 id="hero-title" class="hero-title">
+        <h1 id="hero-title" class="hero-title" data-translate="hero-title">
           Flexible Pricing for Every Need.
         </h1>
-        <p id="hero-subtitle" class="hero-subtitle">
+        <p
+          id="hero-subtitle"
+          class="hero-subtitle"
+          data-translate="hero-subtitle"
+        >
           Choose between monthly or yearly plans—tailored for your growth.
         </p>
       </section>
 
       <section class="pricing-container">
-        <p>Loading pricing plans...</p>
+        <p data-translate="loading-text">Loading pricing plans...</p>
       </section>
     </main>
 
     <footer class="footer">
-      <p id="footer-text">© 2025, EchoVision, Inc. All Rights Reserved.</p>
+      <p id="footer-text" data-translate="footer-text">
+        © 2025, EchoVision, Inc. All Rights Reserved.
+      </p>
     </footer>
 
     <script>
-      document.addEventListener("DOMContentLoaded", async function () {
-        const langBtn = document.getElementById("lang-toggle");
-
-        const translations = {
-          Home: "الرئيسية",
-          Pricing: "الأسعار",
-          "About Us": "معلومات عنا",
-          Logout: "تسجيل الخروج",
-          "Flexible Pricing for Every Need.": "أسعار مرنة تناسب الجميع.",
-          "Choose between monthly or yearly plans—tailored for your growth.":
+      const translations = {
+        en: {
+          "page-title": "EchoVision Pricing",
+          "nav-home": "Home",
+          "nav-pricing": "Pricing",
+          "nav-about": "About Us",
+          "nav-download": "Download",
+          "login-btn": "Login",
+          "signup-btn": "Signup",
+          "logout-btn": "Logout",
+          "dashboard-btn": "Dashboard",
+          "lang-toggle": "AR",
+          "hero-title": "Flexible Pricing for Every Need.",
+          "hero-subtitle":
+            "Choose between monthly or yearly plans—tailored for your growth.",
+          "loading-text": "Loading pricing plans...",
+          "start-now": "Start Now",
+          "footer-text": "© 2025, EchoVision, Inc. All Rights Reserved.",
+          Monthly: "Monthly",
+          Yearly: "Yearly",
+          $39: "$39",
+          $300: "$300",
+          "-15%": "-15%",
+          "Get Started": "Get Started",
+          "Your subscription is still active":
+            "Your subscription is still active",
+        },
+        ar: {
+          "page-title": "أسعار إيكو ڤيجن",
+          "nav-home": "الرئيسية",
+          "nav-pricing": "الأسعار",
+          "nav-about": "من نحن",
+          "nav-download": "تحميل",
+          "login-btn": "تسجيل الدخول",
+          "signup-btn": "إنشاء حساب",
+          "logout-btn": "تسجيل الخروج",
+          "dashboard-btn": "لوحة التحكم",
+          "lang-toggle": "EN",
+          "hero-title": "أسعار مرنة تناسب الجميع.",
+          "hero-subtitle":
             "اختر بين الاشتراك الشهري أو السنوي وفقًا لاحتياجاتك.",
+          "loading-text": "جارٍ تحميل خطط الأسعار...",
+          "start-now": "ابدأ الآن",
+          "footer-text": "© 2025، إيكو ڤيجن، جميع الحقوق محفوظة.",
           Monthly: "شهريًا",
           Yearly: "سنويًا",
           $39: "٣٩ دولار",
           $300: "٣٠٠ دولار",
           "-15%": "-١٥٪",
           "Get Started": "ابدأ الآن",
-          "© 2025, EchoVision, Inc. All Rights Reserved.":
-            "© 2025، شركة EchoVision. جميع الحقوق محفوظة.",
-          Dashboard: "لوحة التحكم",
-        };
+          "Your subscription is still active": "اشتراكك ما زال نشطًا",
+        },
+      };
 
-        let isArabic = false;
+      function updateLanguage(lang) {
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+        document.getElementById("lang-toggle").textContent =
+          translations[lang]["lang-toggle"];
 
-        langBtn.addEventListener("click", function () {
-          isArabic = !isArabic;
-          document.body.dir = isArabic ? "rtl" : "ltr";
-          document.documentElement.lang = isArabic ? "ar" : "en";
-          langBtn.textContent = isArabic ? "EN" : "AR";
-          document
-            .querySelectorAll(
-              ".nav-link, .logout-btn, .hero-title, .hero-subtitle, .plan-name, .plan-name-2, .price, .price-2, .discount, .discount-2, .get-started-btn, .footer p"
-            )
-            .forEach((element) => {
-              const originalText = element.textContent.trim();
-              element.textContent = isArabic
-                ? translations[originalText] || originalText
-                : Object.keys(translations).find(
-                    (key) => translations[key] === originalText
-                  ) || originalText;
-            });
+        document.querySelectorAll("[data-translate]").forEach((el) => {
+          const key = el.getAttribute("data-translate");
+          if (translations[lang][key]) {
+            el.textContent = translations[lang][key];
+          }
         });
 
-        // Example logic for admin display of the dashboard button
-        let isAdmin = true;
-        if (isAdmin) {
-          document.getElementById("dashboard-btn").style.display =
-            "inline-block";
-        } else {
-          document.getElementById("dashboard-btn").style.display = "none";
+        // Update dynamically created elements (pricing cards)
+        document
+          .querySelectorAll(".plan-name, .price, .get-started-btn")
+          .forEach((el) => {
+            const originalText = el.textContent.trim();
+            el.textContent =
+              lang === "ar"
+                ? translations.ar[originalText] || originalText
+                : translations.en[originalText] || originalText;
+          });
+
+        localStorage.setItem("selectedLanguage", lang);
+      }
+
+      // Check the token's expiry
+      function checkTokenExpiry() {
+        const tokenExpiry = localStorage.getItem("tokenExpiry");
+        if (tokenExpiry && Date.now() > Number(tokenExpiry)) {
+          console.log("Token expired");
+          logoutUser();
+          return false;
         }
+        return true;
+      }
+
+      // Check login status and update UI
+      function checkLoginStatus() {
+        const authToken = localStorage.getItem("auth_token");
+        const loginBtn = document.getElementById("login-btn");
+        const signupBtn = document.getElementById("signup-btn");
+        const logoutBtn = document.getElementById("logout-btn");
+        const dashboardBtn = document.getElementById("dashboard-btn");
+        const startNowLi = document.getElementById("start-now-li");
+
+        if (!authToken) {
+          // Guest mode
+          loginBtn.style.display = "inline-block";
+          signupBtn.style.display = "inline-block";
+          logoutBtn.classList.add("hidden");
+          dashboardBtn.classList.add("hidden");
+          startNowLi.classList.add("hidden");
+          localStorage.removeItem("isRefreshed");
+          return;
+        }
+
+        // If token exists, check if it is expired
+        if (!checkTokenExpiry()) return;
+
+        const isSubscribed = localStorage.getItem("is_subscribed");
+        const isAdmin = localStorage.getItem("isAdmin") === "true";
+
+        // Logged-in mode
+        loginBtn.style.display = "none";
+        signupBtn.style.display = "none";
+        logoutBtn.classList.remove("hidden");
+
+        // Show Dashboard button if admin
+        if (isAdmin) {
+          dashboardBtn.classList.remove("hidden");
+        } else {
+          dashboardBtn.classList.add("hidden");
+        }
+
+        // Show "Start Now" if the user is logged in and subscribed
+        if (isSubscribed === "true") {
+          startNowLi.classList.remove("hidden");
+        } else {
+          startNowLi.classList.add("hidden");
+        }
+      }
+
+      // Logout function
+      function logoutUser() {
+        // Clear all user-related localStorage keys except language preference
+        localStorage.removeItem("auth_token");
+        localStorage.removeItem("isAdmin");
+        localStorage.removeItem("is_subscribed");
+        localStorage.removeItem("tokenExpiry");
+        localStorage.removeItem("loggedInUser");
+        localStorage.removeItem("isRefreshed");
+        // Redirect to the same page
+        window.location.href = "pricing.html";
+      }
+
+      document.addEventListener("DOMContentLoaded", async function () {
+        const langBtn = document.getElementById("lang-toggle");
+
+        // Initialize language
+        const savedLang = localStorage.getItem("selectedLanguage") || "en";
+        updateLanguage(savedLang);
+
+        langBtn.addEventListener("click", function () {
+          const newLang = document.documentElement.lang === "en" ? "ar" : "en";
+          updateLanguage(newLang);
+        });
+
+        // Check login status
+        checkLoginStatus();
+
+        // Add logout event listener
+        document.getElementById("logout-btn").addEventListener("click", (e) => {
+          e.preventDefault(); // Prevent default navigation to logout.html
+          logoutUser();
+        });
 
         // Fetch pricing from the API
         const pricingContainer = document.querySelector(".pricing-container");
 
         try {
-          // Retrieve the token from storage (adjust as necessary)
-          const token = localStorage.getItem("auth_token");
-
           const response = await fetch("http://localhost:3000/pricing", {
             headers: {
-              Authorization: `Bearer ${token}`,
               "Content-Type": "application/json",
             },
           });
@@ -181,9 +368,12 @@
           // Clear any existing content
           pricingContainer.innerHTML = "";
 
+          // Check if the user is already subscribed
+          const userSubscription =
+            localStorage.getItem("is_subscribed") === "true";
+
           // Loop through the pricing plans and create cards
           data.pricing.forEach((plan) => {
-            // Determine the card style based on plan_name
             const cardClass =
               plan.plan_name.toLowerCase() === "yearly"
                 ? "pricing-card"
@@ -192,7 +382,11 @@
             const card = document.createElement("article");
             card.className = cardClass;
 
-            card.innerHTML = `
+            const buttonText = userSubscription
+              ? translations[savedLang]["Your subscription is still active"]
+              : translations[savedLang]["Get Started"];
+
+            const cardContent = `
               <div class="plan-details">
                 <h2 class="plan-name">${
                   plan.plan_name.charAt(0).toUpperCase() +
@@ -202,23 +396,28 @@
                   <p class="price">$${plan.price}</p>
                 </div>
               </div>
-              <button class="get-started-btn">Get Started</button>
+              <button class="get-started-btn" ${
+                userSubscription ? "disabled" : ""
+              }>${buttonText}</button>
             `;
 
-            // Append the card to the container
+            card.innerHTML = cardContent;
             pricingContainer.appendChild(card);
 
-            // Attach event listener to the "Get Started" button to store plan details
+            // Attach event listener to the "Get Started" button
             card
               .querySelector(".get-started-btn")
               .addEventListener("click", function () {
-                // Store the selected plan id and price in local storage
-                localStorage.setItem("selectedPlanId", plan.id);
-                localStorage.setItem("selectedPlanPrice", plan.price);
-                // Navigate to checkout page
-                window.location.href = "../checkout/checkout.html";
+                if (!userSubscription) {
+                  localStorage.setItem("selectedPlanId", plan.id);
+                  localStorage.setItem("selectedPlanPrice", plan.price);
+                  window.location.href = "../checkout/checkout.html";
+                }
               });
           });
+
+          // Update language for dynamically created elements
+          updateLanguage(savedLang);
         } catch (error) {
           console.error("Error fetching pricing data:", error);
           pricingContainer.innerHTML =

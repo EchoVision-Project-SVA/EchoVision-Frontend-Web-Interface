@@ -10,7 +10,8 @@
         display: none !important;
       }
 
-      .dashboard-btn {
+      .dashboard-btn,
+      .nav-start-now-btn {
         background-color: #ff9800;
         color: white;
         padding: 12px 20px;
@@ -27,11 +28,13 @@
         box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
         margin-right: 10px;
       }
-      .dashboard-btn:hover {
+      .dashboard-btn:hover,
+      .nav-start-now-btn:hover {
         background-color: #e68900;
         transform: scale(1.05);
       }
-      .dashboard-btn:active {
+      .dashboard-btn:active,
+      .nav-start-now-btn:active {
         transform: scale(0.95);
       }
     </style>
@@ -67,43 +70,61 @@
               >About Us</a
             >
           </li>
+          <li>
+            <a
+              href="download/download.html"
+              class="nav-link"
+              data-translate="nav-download"
+              >Download</a
+            >
+          </li>
+          <!-- Start Now nav button (visible only when logged in and subscribed) -->
+          <li id="start-now-li" class="hidden">
+            <a
+              href="camera/camera.html"
+              id="start-now-navbar-btn"
+              class="nav-start-now-btn"
+              data-translate="start-now"
+              >Start Now</a
+            >
+          </li>
         </ul>
 
         <div class="auth-buttons" id="auth-buttons">
-          <a href="auth/login.html" class="login-btn" data-translate="login-btn"
+          <a
+            href="auth/login.html"
+            class="login-btn"
+            id="login-btn"
+            data-translate="login-btn"
+            style="display: none"
             >Login</a
+          >
+          <a
+            href="auth/logout.html"
+            class="logout-btn hidden"
+            id="logout-btn"
+            data-translate="logout-btn"
+            >Logout</a
           >
           <a
             href="auth/signup.html"
             class="signup-btn"
+            id="signup-btn"
             data-translate="signup-btn"
+            style="display: none"
             >Signup</a
           >
-
-          <button onclick="adminLogin()" style="margin-left: 10px">
-            Admin Login Demo
-          </button>
+          <a href="#" class="lang-btn" id="lang-btn" data-translate="lang-btn"
+            >AR</a
+          >
+          <a
+            href="../EchoVision-Frontend-Web-Dashboard/index.html"
+            class="dashboard-btn hidden"
+            id="dashboard-btn"
+            data-translate="dashboard-btn"
+            >Dashboard</a
+          >
         </div>
-
-        <a
-          href="../EchoVision-Frontend-Web-Dashboard/index.html"
-          class="dashboard-btn hidden"
-          id="dashboard-btn"
-          data-translate="dashboard-btn"
-          >Dashboard</a
-        >
-
-        <a
-          href="#"
-          class="logout-btn hidden"
-          id="logout-btn"
-          data-translate="logout-btn"
-          >Logout</a
-        >
-
-        <a href="#" class="lang-btn" id="lang-btn" data-translate="lang-btn"
-          >AR</a
-        >
       </nav>
     </header>
 
@@ -137,9 +158,11 @@
             data-translate="get-app-btn"
             >Get App</a
           >
+          <!-- Start Now button in hero section (visible only when logged in and subscribed) -->
           <a
             href="camera/camera.html"
-            class="get-app-btn"
+            class="get-app-btn hidden"
+            id="start-now-hero-btn"
             data-translate="start-now"
             >Start Now</a
           >
@@ -160,6 +183,7 @@
           "nav-home": "Home",
           "nav-pricing": "Pricing",
           "nav-about": "About Us",
+          "nav-download": "Download",
           "login-btn": "Login",
           "signup-btn": "Signup",
           "logout-btn": "Logout",
@@ -178,6 +202,7 @@
           "nav-home": "الرئيسية",
           "nav-pricing": "الأسعار",
           "nav-about": "من نحن",
+          "nav-download": "تحميل",
           "login-btn": "تسجيل الدخول",
           "signup-btn": "إنشاء حساب",
           "logout-btn": "تسجيل الخروج",
@@ -209,21 +234,86 @@
         localStorage.setItem("selectedLanguage", lang);
       }
 
-      function adminLogin() {
-        localStorage.setItem("loggedInUser", "adminUser");
-        localStorage.setItem("isAdmin", "true");
-        console.log(
-          "Admin login triggered:",
-          localStorage.getItem("loggedInUser"),
-          localStorage.getItem("isAdmin")
-        );
-        window.location.reload();
+      // Check the token's expiry
+      function checkTokenExpiry() {
+        const tokenExpiry = localStorage.getItem("tokenExpiry");
+        if (tokenExpiry && Date.now() > Number(tokenExpiry)) {
+          console.log("Token expired");
+          logoutUser();
+          return false;
+        }
+        return true;
+      }
+
+      // Check login status and update UI
+      function checkLoginStatus() {
+        const authToken = localStorage.getItem("auth_token");
+        const loginBtn = document.getElementById("login-btn");
+        const signupBtn = document.getElementById("signup-btn");
+        const logoutBtn = document.getElementById("logout-btn");
+        const dashboardBtn = document.getElementById("dashboard-btn");
+        const startNowLi = document.getElementById("start-now-li");
+        const startNowHeroBtn = document.getElementById("start-now-hero-btn");
+
+        if (!authToken) {
+          // Guest mode
+          loginBtn.style.display = "inline-block";
+          signupBtn.style.display = "inline-block";
+          logoutBtn.classList.add("hidden");
+          dashboardBtn.classList.add("hidden");
+          startNowLi.classList.add("hidden");
+          startNowHeroBtn.classList.add("hidden");
+          localStorage.removeItem("isRefreshed");
+          return;
+        }
+
+        // If token exists, check if it is expired
+        if (!checkTokenExpiry()) return;
+
+        const isSubscribed = localStorage.getItem("is_subscribed");
+        const isAdmin = localStorage.getItem("isAdmin") === "true";
+
+        // Logged-in mode
+        loginBtn.style.display = "none";
+        signupBtn.style.display = "none";
+        logoutBtn.classList.remove("hidden");
+
+        // Show Dashboard button if admin
+        if (isAdmin) {
+          dashboardBtn.classList.remove("hidden");
+        } else {
+          dashboardBtn.classList.add("hidden");
+        }
+
+        // Show "Start Now" if the user is subscribed
+        if (isSubscribed === "true") {
+          startNowLi.classList.remove("hidden");
+          startNowHeroBtn.classList.remove("hidden");
+        } else {
+          startNowLi.classList.add("hidden");
+          startNowHeroBtn.classList.add("hidden");
+        }
+      }
+
+      // Logout function
+      function logoutUser() {
+        // Clear all user-related localStorage keys except language preference
+        localStorage.removeItem("auth_token");
+        localStorage.removeItem("isAdmin");
+        localStorage.removeItem("is_subscribed");
+        localStorage.removeItem("tokenExpiry");
+        localStorage.removeItem("loggedInUser");
+        localStorage.removeItem("isRefreshed");
+        // Redirect to the same page
+        window.location.href = "index.html";
       }
 
       document.addEventListener("DOMContentLoaded", function () {
+        // Initialize language
         const savedLang = localStorage.getItem("selectedLanguage") || "en";
         updateLanguage(savedLang);
 
+        // Language toggle
         document
           .getElementById("lang-btn")
           .addEventListener("click", function () {
@@ -232,35 +322,14 @@
             updateLanguage(newLang);
           });
 
-        function checkLoginStatus() {
-          const loggedInUser = localStorage.getItem("loggedInUser");
-          console.log("loggedInUser:", loggedInUser);
-          if (loggedInUser) {
-            document.getElementById("auth-buttons").classList.add("hidden");
-
-            document.getElementById("logout-btn").classList.remove("hidden");
-
-            if (localStorage.getItem("isAdmin") === "true") {
-              console.log("User is admin");
-              document
-                .getElementById("dashboard-btn")
-                .classList.remove("hidden");
-            } else {
-              console.log("User is not admin");
-            }
-          }
-        }
-
-        function logoutUser() {
-          localStorage.removeItem("loggedInUser");
-          localStorage.removeItem("isAdmin");
-          window.location.reload();
-        }
-
+        // Check login status
         checkLoginStatus();
-        document
-          .getElementById("logout-btn")
-          .addEventListener("click", logoutUser);
+
+        // Add logout event listener
+        document.getElementById("logout-btn").addEventListener("click", (e) => {
+          e.preventDefault(); // Prevent default navigation to logout.html
+          logoutUser();
+        });
       });
     </script>
   </body>

@@ -1,128 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - EchoVision</title>
-  <link rel="stylesheet" href="../public/css/login.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - EchoVision</title>
+    <link rel="stylesheet" href="../public/css/login.css" />
+    <style>
+      /* Optional: Basic styles for the message container */
+      #message-container {
+        margin-top: 20px;
+        padding: 10px;
+        text-align: center;
+        font-size: 1rem;
+        color: #ffffff;
+        display: none;
+      }
+      #message-container.success {
+        background-color: #4caf50;
+      }
+      #message-container.error {
+        background-color: #f44336;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="login-container">
+      <button id="lang-toggle" class="lang-btn">AR</button>
 
-<section class="login-container">
-  <button id="lang-toggle" class="lang-btn">AR</button> 
+      <img
+        loading="lazy"
+        src="https://cdn.builder.io/api/v1/image/assets/TEMP/bedb8fd6e227ef34cf9e53bb0d48d245af596939de8b59f118b7d9e572b31f31?placeholderIfAbsent=true"
+        class="logo"
+        alt="EchoVision Logo"
+      />
 
-  <img
-    loading="lazy"
-    src="https://cdn.builder.io/api/v1/image/assets/TEMP/bedb8fd6e227ef34cf9e53bb0d48d245af596939de8b59f118b7d9e572b31f31?placeholderIfAbsent=true"
-    class="logo"
-    alt="EchoVision Logo"
-  />
+      <h1 class="login-title">Login to EchoVision</h1>
 
-  <h1 class="login-title">Login to EchoVision</h1>
+      <form class="login-form">
+        <label class="input-field">
+          <span class="input-label">Email Address</span>
+          <input
+            type="email"
+            class="input-control"
+            id="email-input"
+            placeholder="Email"
+            required
+          />
+        </label>
 
-  <form class="login-form">
-    <label class="input-field">
-      <span class="input-label">Email Address</span>
-      <input type="email" class="input-control" id="email-input" placeholder="Email" required />
-    </label>
+        <label class="input-field">
+          <span class="input-label">Password</span>
+          <input
+            type="password"
+            class="input-control"
+            id="password-input"
+            placeholder="Password"
+            required
+          />
+        </label>
 
-    <label class="input-field">
-      <span class="input-label">Password</span>
-      <input type="password" class="input-control" id="password-input" placeholder="Password" required />
-    </label>
+        <button type="submit" class="login-button">
+          <span class="button-text">Login</span>
+        </button>
+      </form>
 
-    <button type="submit" class="login-button">
-      <span class="button-text">Login</span>
-    </button>
-  </form>
+      <!-- Message container for non-alert messages -->
+      <div id="message-container"></div>
 
-  <footer class="signup-section">
-    <div class="signup-prompt">
-      <span>Need to create an account?</span>
-      <span class="divider"></span>
-      <a href="signup.html" class="signup-link">Create account</a>
-    </div>
-  </footer>
-</section>
+      <footer class="signup-section">
+        <div class="signup-prompt">
+          <span>Need to create an account?</span>
+          <span class="divider"></span>
+          <a href="signup.html" class="signup-link">Create account</a>
+        </div>
+      </footer>
+    </section>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const langBtn = document.getElementById("lang-toggle");
-    const emailInput = document.getElementById("email-input");
-    const passwordInput = document.getElementById("password-input");
+    <script>
+      // Language toggle handling remains the same.
+      document.addEventListener("DOMContentLoaded", function () {
+        const langBtn = document.getElementById("lang-toggle");
+        const emailInput = document.getElementById("email-input");
+        const passwordInput = document.getElementById("password-input");
 
-    const translations = {
-      "Login to EchoVision": "تسجيل الدخول إلى EchoVision",
-      "Email Address": "البريد الإلكتروني",
-      "Password": "كلمة المرور",
-      "Login": "تسجيل الدخول",
-      "Need to create an account?": "هل تحتاج إلى إنشاء حساب؟",
-      "Create account": "إنشاء حساب",
-      "Email": "البريد الإلكتروني",
-      "Password": "كلمة المرور"
-    };
+        const translations = {
+          "Login to EchoVision": "تسجيل الدخول إلى EchoVision",
+          "Email Address": "البريد الإلكتروني",
+          Password: "كلمة المرور",
+          Login: "تسجيل الدخول",
+          "Need to create an account?": "هل تحتاج إلى إنشاء حساب؟",
+          "Create account": "إنشاء حساب",
+          Email: "البريد الإلكتروني",
+          Password: "كلمة المرور",
+        };
 
-    let isArabic = false;
+        let isArabic = false;
 
-    langBtn.addEventListener("click", function () {
-      isArabic = !isArabic;
-      document.body.dir = isArabic ? "rtl" : "ltr";
-      document.documentElement.lang = isArabic ? "ar" : "en";
-      langBtn.textContent = isArabic ? "EN" : "AR";
+        langBtn.addEventListener("click", function () {
+          isArabic = !isArabic;
+          document.body.dir = isArabic ? "rtl" : "ltr";
+          document.documentElement.lang = isArabic ? "ar" : "en";
+          langBtn.textContent = isArabic ? "EN" : "AR";
 
-      document.querySelectorAll(".login-title, .input-label, .button-text, .signup-prompt span, .signup-link").forEach(element => {
-        const originalText = element.textContent.trim();
-        element.textContent = isArabic ? translations[originalText] || originalText : Object.keys(translations).find(key => translations[key] === originalText) || originalText;
+          document
+            .querySelectorAll(
+              ".login-title, .input-label, .button-text, .signup-prompt span, .signup-link"
+            )
+            .forEach((element) => {
+              const originalText = element.textContent.trim();
+              element.textContent = isArabic
+                ? translations[originalText] || originalText
+                : Object.keys(translations).find(
+                    (key) => translations[key] === originalText
+                  ) || originalText;
+            });
+
+          emailInput.setAttribute(
+            "placeholder",
+            isArabic ? translations["Email"] : "Email"
+          );
+          passwordInput.setAttribute(
+            "placeholder",
+            isArabic ? translations["Password"] : "Password"
+          );
+        });
       });
+    </script>
 
-      emailInput.setAttribute("placeholder", isArabic ? translations["Email"] : "Email");
-      passwordInput.setAttribute("placeholder", isArabic ? translations["Password"] : "Password");
-    });
-  });
-</script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Check if the user is already logged in
+        const authToken = localStorage.getItem("auth_token");
+        const tokenExpiry = localStorage.getItem("tokenExpiry");
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const loginForm = document.querySelector(".login-form");
-    
-    loginForm.addEventListener("submit", async function (event) {
-        event.preventDefault(); 
-        const email = document.getElementById("email-input").value.trim();
-        const password = document.getElementById("password-input").value.trim();
-      
-        if (!email || !password) {
-            alert("Please enter both email and password.");
-            return;
+        if (authToken && tokenExpiry && Date.now() < tokenExpiry) {
+          // If the token is valid, redirect to the index page
+          window.location.href = "../index.html";
         }
 
-        const requestBody = { email, password };
+        // Existing login form logic below...
+        const loginForm = document.querySelector(".login-form");
+        const messageContainer = document.getElementById("message-container");
 
-        try {
+        // Helper function to display messages without using alert
+        function showMessage(message, type = "error") {
+          messageContainer.textContent = message;
+          messageContainer.className = "";
+          messageContainer.classList.add(type);
+          messageContainer.style.display = "block";
+        }
+
+        loginForm.addEventListener("submit", async function (event) {
+          event.preventDefault();
+          const email = document.getElementById("email-input").value.trim();
+          const password = document
+            .getElementById("password-input")
+            .value.trim();
+
+          if (!email || !password) {
+            showMessage("Please enter both email and password.");
+            return;
+          }
+
+          const requestBody = { email, password };
+
+          try {
             const response = await fetch("http://localhost:3000/auth/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(requestBody)
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(requestBody),
             });
 
             if (!response.ok) {
-                throw new Error("Login failed. Please check your credentials.");
+              throw new Error("Login failed. Please check your credentials.");
             }
 
             const data = await response.json();
-            alert("Login successful! Redirecting...");
+            showMessage("Login successful! Redirecting...", "success");
 
+            // Store the authentication token
             localStorage.setItem("auth_token", data.token);
-            localStorage.setItem("loggedInUser", "true"); 
 
-            window.location.href = "../index.html"; 
-        } catch (error) {
-            alert(error.message);
-        }
-    });
-  });
-</script>
+            localStorage.setItem("name", data.name);
 
-</body>
+            // Check if the user is subscribed
+            const subscriptionExpiration = data.subscription_expiration;
+            const isSubscribed =
+              subscriptionExpiration &&
+              new Date(subscriptionExpiration) > new Date();
+
+            // Save subscription status to localStorage
+            localStorage.setItem("is_subscribed", isSubscribed);
+            localStorage.setItem("user_id", data.user_id);
+            // Save the user admin status if they are an admin
+            localStorage.setItem("isAdmin", data.is_admin ? "true" : "false");
+
+            // Mark the user as logged in
+            localStorage.setItem("loggedInUser", "true");
+
+            // Set the token expiry timestamp to one hour from now
+            localStorage.setItem("tokenExpiry", Date.now() + 3600 * 1000);
+
+            setTimeout(() => {
+              window.location.href = "../index.html";
+            }, 1500); // slight delay for the user to see the success message
+          } catch (error) {
+            showMessage(error.message);
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
